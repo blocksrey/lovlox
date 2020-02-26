@@ -1,0 +1,3 @@
+local Enum = {}
+
+return Enum

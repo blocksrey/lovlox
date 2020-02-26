@@ -1,4 +1,3 @@
-
 local model = {}
 
 function model.new()
