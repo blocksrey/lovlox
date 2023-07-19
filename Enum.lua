@@ -1,3 +1,0 @@
-local Enum = {}
-
-return Enum

@@ -1,0 +1,3499 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+	<External>null</External>
+	<External>nil</External>
+	<Item class="Workspace" referent="RBX997BB1D884CF46BD8E06F8F211B8A380">
+		<Properties>
+			<bool name="AllowThirdPartySales">false</bool>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<token name="AvatarUnificationMode">0</token>
+			<token name="ClientAnimatorThrottling">0</token>
+			<BinaryString name="CollisionGroupData">AQEABP////8HRGVmYXVsdA==</BinaryString>
+			<Ref name="CurrentCamera">RBX0674F33F35FF4FAC88C74E78E04D82C8</Ref>
+			<double name="DistributedGameTime">0</double>
+			<bool name="ExplicitAutoJoints">true</bool>
+			<float name="FallenPartsDestroyHeight">-500</float>
+			<Vector3 name="GlobalWind">
+				<X>0</X>
+				<Y>0</Y>
+				<Z>0</Z>
+			</Vector3>
+			<float name="Gravity">196.199997</float>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<token name="HumanoidOnlySetCollisionsOnStateChange">0</token>
+			<token name="InterpolationThrottling">0</token>
+			<token name="LevelOfDetail">0</token>
+			<token name="MeshPartHeadsAndAccessories">0</token>
+			<CoordinateFrame name="ModelMeshCFrame">
+				<X>0</X>
+				<Y>0</Y>
+				<Z>0</Z>
+				<R00>1</R00>
+				<R01>0</R01>
+				<R02>0</R02>
+				<R10>0</R10>
+				<R11>1</R11>
+				<R12>0</R12>
+				<R20>0</R20>
+				<R21>0</R21>
+				<R22>1</R22>
+			</CoordinateFrame>
+			<SharedString name="ModelMeshData">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<Vector3 name="ModelMeshSize">
+				<X>0</X>
+				<Y>0</Y>
+				<Z>0</Z>
+			</Vector3>
+			<token name="ModelStreamingMode">0</token>
+			<string name="Name">Workspace</string>
+			<bool name="NeedsPivotMigration">false</bool>
+			<token name="PhysicsSteppingMethod">0</token>
+			<Ref name="PrimaryPart">null</Ref>
+			<token name="RejectCharacterDeletions">0</token>
+			<token name="ReplicateInstanceDestroySetting">0</token>
+			<token name="Retargeting">0</token>
+			<float name="ScaleFactor">1</float>
+			<token name="SignalBehavior2">0</token>
+			<int64 name="SourceAssetId">-1</int64>
+			<token name="StreamOutBehavior">0</token>
+			<bool name="StreamingEnabled">false</bool>
+			<token name="StreamingIntegrityMode">0</token>
+			<int name="StreamingMinRadius">64</int>
+			<int name="StreamingTargetRadius">1024</int>
+			<BinaryString name="Tags"></BinaryString>
+			<bool name="TerrainWeldsFixed">true</bool>
+			<bool name="TouchesUseCollisionGroups">false</bool>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b500000002</UniqueId>
+			<OptionalCoordinateFrame name="WorldPivotData">
+				<CFrame>
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CFrame>
+			</OptionalCoordinateFrame>
+		</Properties>
+		<Item class="Camera" referent="RBX0674F33F35FF4FAC88C74E78E04D82C8">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<CoordinateFrame name="CFrame">
+					<X>-35.286396</X>
+					<Y>14.3871508</Y>
+					<Z>1.69258404</Z>
+					<R00>0.416370749</R00>
+					<R01>-0.442200065</R01>
+					<R02>0.794414639</R02>
+					<R10>-0</R10>
+					<R11>0.873756111</R11>
+					<R12>0.486364424</R12>
+					<R20>-0.909194946</R20>
+					<R21>-0.202507913</R21>
+					<R22>0.363806456</R22>
+				</CoordinateFrame>
+				<Ref name="CameraSubject">null</Ref>
+				<token name="CameraType">0</token>
+				<float name="FieldOfView">70</float>
+				<token name="FieldOfViewMode">0</token>
+				<CoordinateFrame name="Focus">
+					<X>-36.8752251</X>
+					<Y>13.414422</Y>
+					<Z>0.964971185</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="HeadLocked">true</bool>
+				<float name="HeadScale">1</float>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<string name="Name">Camera</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b500003180</UniqueId>
+				<bool name="VRTiltAndRollEnabled">false</bool>
+			</Properties>
+		</Item>
+		<Item class="Part" referent="RBX10563F5E58434EE396A3EED61C1492CA">
+			<Properties>
+				<bool name="Anchored">true</bool>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">4</token>
+				<token name="BottomSurfaceInput">0</token>
+				<CoordinateFrame name="CFrame">
+					<X>0</X>
+					<Y>-10</Y>
+					<Z>0</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">true</bool>
+				<bool name="CanQuery">true</bool>
+				<bool name="CanTouch">true</bool>
+				<bool name="CastShadow">true</bool>
+				<string name="CollisionGroup">Default</string>
+				<int name="CollisionGroupId">0</int>
+				<Color3uint8 name="Color3uint8">4284702562</Color3uint8>
+				<PhysicalProperties name="CustomPhysicalProperties">
+					<CustomPhysics>false</CustomPhysics>
+				</PhysicalProperties>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">true</bool>
+				<bool name="Massless">false</bool>
+				<token name="Material">256</token>
+				<string name="MaterialVariantSerialized"></string>
+				<string name="Name">Baseplate</string>
+				<CoordinateFrame name="PivotOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<int name="RootPriority">0</int>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">3</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b500003181</UniqueId>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">0</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>512</X>
+					<Y>20</Y>
+					<Z>512</Z>
+				</Vector3>
+			</Properties>
+		</Item>
+		<Item class="Terrain" referent="RBX00F1122B86D5497DA059526C2433C510">
+			<Properties>
+				<token name="AcquisitionMethod">0</token>
+				<bool name="Anchored">true</bool>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">4</token>
+				<token name="BottomSurfaceInput">0</token>
+				<CoordinateFrame name="CFrame">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">true</bool>
+				<bool name="CanQuery">true</bool>
+				<bool name="CanTouch">true</bool>
+				<bool name="CastShadow">true</bool>
+				<string name="CollisionGroup">Default</string>
+				<int name="CollisionGroupId">0</int>
+				<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
+				<PhysicalProperties name="CustomPhysicalProperties">
+					<CustomPhysics>false</CustomPhysics>
+				</PhysicalProperties>
+				<bool name="Decoration">false</bool>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">true</bool>
+				<bool name="Massless">false</bool>
+				<token name="Material">256</token>
+				<BinaryString name="MaterialColors"><![CDATA[AAAAAAAAan8/P39rf2Y/ilY+j35fi21PZmxvZbDqw8faiVpHOi4kHh4lZlw76JxKc3trhHta
+gcLgc4RKxr21zq2UlJSM]]></BinaryString>
+				<string name="MaterialVariantSerialized"></string>
+				<string name="Name">Terrain</string>
+				<BinaryString name="PhysicsGrid">AgMAAAAAAAAAAAAAAAA=</BinaryString>
+				<CoordinateFrame name="PivotOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<int name="RootPriority">0</int>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<bool name="ShorelinesUpgraded">false</bool>
+				<BinaryString name="SmoothGrid">AQU=</BinaryString>
+				<bool name="SmoothVoxelsUpgraded">false</bool>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">3</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b500003182</UniqueId>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<Color3 name="WaterColor">
+					<R>0.0470588282</R>
+					<G>0.329411775</G>
+					<B>0.360784322</B>
+				</Color3>
+				<float name="WaterReflectance">1</float>
+				<float name="WaterTransparency">0.300000012</float>
+				<float name="WaterWaveSize">0.150000006</float>
+				<float name="WaterWaveSpeed">10</float>
+				<Vector3 name="size">
+					<X>2044</X>
+					<Y>252</Y>
+					<Z>2044</Z>
+				</Vector3>
+			</Properties>
+		</Item>
+		<Item class="Part" referent="RBX9BAA44FF1A764E6381DD9FF6E1D65505">
+			<Properties>
+				<bool name="Anchored">true</bool>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<CoordinateFrame name="CFrame">
+					<X>-65</X>
+					<Y>0.5</Y>
+					<Z>-4</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<bool name="CanQuery">true</bool>
+				<bool name="CanTouch">true</bool>
+				<bool name="CastShadow">true</bool>
+				<string name="CollisionGroup">Default</string>
+				<int name="CollisionGroupId">0</int>
+				<Color3uint8 name="Color3uint8">4291045404</Color3uint8>
+				<PhysicalProperties name="CustomPhysicalProperties">
+					<CustomPhysics>false</CustomPhysics>
+				</PhysicalProperties>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<bool name="Massless">false</bool>
+				<token name="Material">256</token>
+				<string name="MaterialVariantSerialized"></string>
+				<string name="Name">Part</string>
+				<CoordinateFrame name="PivotOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<int name="RootPriority">0</int>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b500003183</UniqueId>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>4</X>
+					<Y>1</Y>
+					<Z>2</Z>
+				</Vector3>
+			</Properties>
+			<Item class="Script" referent="RBXD69128AD2A7A418490CF61B620559937">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<bool name="Disabled">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">1st</string>
+					<token name="RunContext">0</token>
+					<string name="ScriptGuid">{6081C6E1-E3DE-48B2-87C6-E0FB3D7F3DC2}</string>
+					<ProtectedString name="Source"><![CDATA[--[[
+	body = FreeBody.new()
+
+	body:step(dt)
+		steps the body forward by dt time
+
+	body:impulse(i, I)
+		applies an impulse at the world point i with impulse I
+
+	body:impulseRelative(i, I)
+		applies an impulse at the relative point i with relative impulse I
+
+	body:setShape(u, v, w, density)
+		sets the shape to the parallelopiped defined with spanning vectors, u, v and w with density d
+		a u + b v + c w
+		-1 < (a, b, c) < 1
+
+	body:setCenterOfMass(c)
+		sets the center of mass offset
+
+	body:setPosition(P)
+
+	body:setVelocity(v)
+
+	body:setGravity(g)
+
+	body:setMomentum(p)
+
+	body:setAngularVelocity(w)
+
+	body:setAngularMomentum(L)
+
+	body:setCFrame(cframe)
+
+	c = body:getCenterOfMass()
+		gets the center of mass offset
+
+	P = body:getPosition()
+
+	v = body:getVelocity()
+
+	g = body:getGravity()
+
+	p = body:getMomentum()
+
+	L = body:getAngularMomentum()
+
+	w = body:getAngularVelocity()
+
+	cframe = body:getCFrame()
+
+	m = body:getMass()
+		returns the mass
+
+	Ixx, Iyy, Izz, Ixy, Iyz, Izx = body:getMomentOfInertia()
+		returns the moment of inertia's unique components
+--]]
+
+local v3  = Vector3.new
+local cf  = CFrame.new
+local cos = math.cos
+local sin = math.sin
+
+local function mulQuatQuat(
+	Aw, Ax, Ay, Az,
+	Bw, Bx, By, Bz
+)
+	return
+		Aw*Bw - Ax*Bx - Ay*By - Az*Bz,
+		Ax*Bw + Aw*Bx - Az*By + Ay*Bz,
+		Ay*Bw + Az*Bx + Aw*By - Ax*Bz,
+		Az*Bw - Ay*Bx + Ax*By + Aw*Bz
+end
+
+local function transformVecByQuat(Qw, Qx, Qy, Qz, vx, vy, vz)
+	local Q2 = Qw*Qw + Qx*Qx + Qy*Qy + Qz*Qz
+	if Q2 == 0 then
+		return vx, vy, vz
+	else
+		local Vw = Qx*vx + Qy*vy + Qz*vz
+		local Vx = Qw*vx + Qy*vz - Qz*vy
+		local Vy = Qw*vy + Qz*vx - Qx*vz
+		local Vz = Qw*vz + Qx*vy - Qy*vx
+		return
+			(Qx*Vw + Qw*Vx - Qz*Vy + Qy*Vz)/Q2,
+			(Qy*Vw + Qz*Vx + Qw*Vy - Qx*Vz)/Q2, 
+			(Qz*Vw - Qy*Vx + Qx*Vy + Qw*Vz)/Q2
+	end
+end
+
+local function unitQuat(Qw, Qx, Qy, Qz)
+	local Q = (Qw*Qw + Qx*Qx + Qy*Qy + Qz*Qz)^0.5
+	if Q == 0 then
+		return 1, 0, 0, 0
+	else
+		return Qw/Q, Qx/Q, Qy/Q, Qz/Q
+	end
+end
+
+local function sqrtQuat(Qw, Qx, Qy, Qz)
+	local Q = (Qw*Qw + Qx*Qx + Qy*Qy + Qz*Qz)^0.5
+	return unitQuat(Qw + Q, Qx, Qy, Qz)
+end
+
+local function mulMatVec(
+	Axx, Ayx, Azx,
+	Axy, Ayy, Azy,
+	Axz, Ayz, Azz,
+	bx, by, bz
+)
+	return
+		Axx*bx + Ayx*by + Azx*bz,
+		Axy*bx + Ayy*by + Azy*bz,
+		Axz*bx + Ayz*by + Azz*bz
+end
+
+local function getRotationDerivative(
+	Txx, Tyy, Tzz,
+	Txy, Tyz, Tzx,
+	Rw, Rx, Ry, Rz,
+	Lx, Ly, Lz
+)
+	local lx, ly, lz = transformVecByQuat(Rw, -Rx, -Ry, -Rz, Lx, Ly, Lz)
+	local wx, wy, wz = mulMatVec(
+		Txx, Txy, Tzx,
+		Txy, Tyy, Tyz,
+		Tzx, Tyz, Tzz,
+		lx, ly, lz
+	)
+
+	return mulQuatQuat(Rw, Rx, Ry, Rz, 0, wx/2, wy/2, wz/2)
+end
+
+local function getRotationSecondDerivative(
+	Txx, Tyy, Tzz,
+	Txy, Tyz, Tzx,
+	Rw, Rx, Ry, Rz,
+	Dw, Dx, Dy, Dz,
+	Lx, Ly, Lz
+)
+	--R ** (T * (I**L**D + E**L**R)) + D**(T * (I ** L ** R))
+	local lx, ly, lz = transformVecByQuat(Rw, -Rx, -Ry, -Rz, Lx, Ly, Lz)
+	local wx, wy, wz = mulMatVec(
+		Txx, Txy, Tzx,
+		Txy, Tyy, Tyz,
+		Tzx, Tyz, Tzz,
+		lx, ly, lz
+	)
+
+	local _, ax, ay, az = mulQuatQuat(Rw, -Rx, -Ry, -Rz, mulQuatQuat(0, Lx, Ly, Lz, Dw, Dx, Dy, Dz))
+	local _, bx, by, bz = mulQuatQuat(Dw, -Dx, -Dy, -Dz, mulQuatQuat(0, Lx, Ly, Lz, Rw, Rx, Ry, Rz))
+	local cx, cy, cz = mulMatVec(
+		Txx, Txy, Tzx,
+		Txy, Tyy, Tyz,
+		Tzx, Tyz, Tzz,
+		ax + bx, ay + by, az + bz
+	)
+
+	local dw, dx, dy, dz = mulQuatQuat(Rw, Rx, Ry, Rz, 0, cx, cy, cz)
+	local ew, ex, ey, ez = mulQuatQuat(Dw, Dx, Dy, Dz, 0, wx, wy, wz)
+
+	return (dw + ew)/2, (dx + ex)/2, (dy + ey)/2, (dz + ez)/2
+end
+
+local function localTransform(
+	Txx, Tyy, Tzz,
+	Txy, Tyz, Tzx,
+	Rw, Rx, Ry, Rz,
+	Lx, Ly, Lz
+)
+	local lx, ly, lz = transformVecByQuat(Rw, -Rx, -Ry, -Rz, Lx, Ly, Lz)
+	local wx, wy, wz = mulMatVec(
+		Txx, Txy, Tzx,
+		Txy, Tyy, Tyz,
+		Tzx, Tyz, Tzz,
+		lx, ly, lz
+	)
+
+	return transformVecByQuat(Rw, Rx, Ry, Rz, wx, wy, wz)
+end
+
+local function invMat(
+	xx, yx, zx,
+	xy, yy, zy,
+	xz, yz, zz
+)
+	local det = zx*(xy*yz - xz*yy) + zy*(xz*yx - xx*yz) + zz*(xx*yy - xy*yx)
+	return
+		(yy*zz - yz*zy)/det, (yz*zx - yx*zz)/det, (yx*zy - yy*zx)/det,
+		(xz*zy - xy*zz)/det, (xx*zz - xz*zx)/det, (xy*zx - xx*zy)/det,
+		(xy*yz - xz*yy)/det, (xz*yx - xx*yz)/det, (xx*yy - xy*yx)/det
+end
+
+--[[
+	provides a simple way to construct an
+	arbitrary moment of inertia matrix
+
+	parallelepiped volume described as:
+		a*x + b*y + c*z
+		-1 < (a, b, c) < 1
+
+	I*w = momentum
+	I^-1*momentum = w
+--]]
+local function parallelepipedMoment(
+	xx, yx, zx,--i
+	xy, yy, zy,--j
+	xz, yz, zz,--k
+	density
+)
+	local ii = xx*xx + yx*yx + zx*zx
+	local jj = xy*xy + yy*yy + zy*zy
+	local kk = xz*xz + yz*yz + zz*zz
+	local ij = xx*xy + yx*yy + zx*zy
+	local jk = xy*xz + yy*yz + zy*zz
+	local ki = xz*xx + yz*yx + zz*zx
+	local det = zx*(xy*yz - xz*yy) + zy*(xz*yx - xx*yz) + zz*(xx*yy - xy*yx)
+	local mass = 8*det*density
+	local c = 1/3*mass
+	return
+		c*(jj + kk), c*(ii + kk), c*(ii + jj),
+		-c*ij, -c*jk, -c*ki,
+		mass
+end
+
+local FreeBody = {}
+FreeBody.__index = FreeBody
+
+do
+	local base = FreeBody
+	--base._Fx, base._Fy, base._Fz = 0, 0, 0--force
+	base._gx, base._gy, base._gz = 0, 0, 0--gravity
+	base._px, base._py, base._pz = 0, 0, 0--momentum
+	base._Px, base._Py, base._Pz = 0, 0, 0--position
+	base._cx, base._cy, base._cz = 0, 0, 0--center of mass
+
+	base._Rw, base._Rx, base._Ry, base._Rz = 1, 0, 0, 0--rotation
+
+	--base._Tx, base._Ty, base._Tz = 0, 0, 0--torque
+	base._Lx, base._Ly, base._Lz = 0, 0, 0--angular momentum
+
+	base._mass = 1
+
+	base._Ixx, base._Iyy, base._Izz = 1, 1, 1
+	base._Ixy, base._Iyz, base._Izx = 0, 0, 0--moment of inertia
+
+	base._Txx, base._Tyy, base._Tzz = 1, 1, 1
+	base._Txy, base._Tyz, base._Tzx = 0, 0, 0--inverse moment of inertia
+end
+
+function FreeBody.new()
+	return setmetatable({}, FreeBody)
+end
+
+function FreeBody:setShape(u, v, w, density)
+	local
+	Ixx, Iyy, Izz,
+	Ixy, Iyz, Izx,
+	mass = parallelepipedMoment(
+		u.x, v.x, w.x,
+		u.y, v.y, w.y,
+		u.z, v.z, w.z,
+		density or 1
+	)
+	local
+	Txx, Txy, Tzx,
+	Txy, Tyy, Tyz,
+	Tzx, Tyz, Tzz = invMat(
+		Ixx, Ixy, Izx,
+		Ixy, Iyy, Iyz,
+		Izx, Iyz, Izz
+	)
+	self._Ixx, self._Iyy, self._Izz = Ixx, Iyy, Izz
+	self._Ixy, self._Iyz, self._Izx = Ixy, Iyz, Izx
+	self._Txx, self._Tyy, self._Tzz = Txx, Tyy, Tzz
+	self._Txy, self._Tyz, self._Tzx = Txy, Tyz, Tzx
+	self._mass = mass
+end
+
+function FreeBody:setCenterOfMass(c)
+	self._cx, self._cy, self._cz = c.x, c.y, c.z
+end
+
+function FreeBody:setPosition(P)
+	self._Px, self._Py, self._Pz = P.x, P.y, P.z
+end
+
+function FreeBody:setVelocity(v)
+	self._px, self._py, self._pz = self._mass*v.x, self._mass*v.y, self._mass*v.z
+end
+
+function FreeBody:setGravity(g)
+	self._gx, self._gy, self._gz = g.x, g.y, g.z
+end
+
+function FreeBody:setMomentum(p)
+	self._px, self._py, self._pz = p.x, p.y, p.z
+end
+
+function FreeBody:setAngularVelocity(w)
+	self._Lx, self._Ly, self._Lz = localTransform(
+		self._Ixx, self._Iyy, self._Izz,
+		self._Ixy, self._Iyz, self._Izx,
+		self._Rw, self._Rx, self._Ry, self._Rz,
+		w.x, w.y, w.z
+	)
+end
+
+function FreeBody:setAngularMomentum(L)
+	self._Lx, self._Ly, self._Lz = L.x, L.y, L.z
+end
+
+local function CFtoQ(cf)
+	local a, t = cf:ToAxisAngle()
+	local c = cos(t/2)
+	local s = sin(t/2)
+	return
+		cf.x, cf.y, cf.z,
+		c, s*a.x, s*a.y, s*a.z
+end
+
+function FreeBody:setCFrame(cframe)
+	self._px, self._py, self._pz, self._Rw, self._Rx, self._Ry, self._Rz = CFtoQ(cframe)
+end
+
+function FreeBody:getCenterOfMass()
+	return v3(self._cx, self._cy, self._cz)
+end
+
+function FreeBody:getCenterOfMassWorld()
+	local ox, oy, oz = transformVecByQuat(self._Rw, self._Rx, self._Ry, self._Rz, self._cx, self._cy, self._cz)
+	return v3(self._Px + ox, self._Py + oy, self._Pz + oz)
+end
+
+function FreeBody:getPosition()
+	return v3(self._Px, self._Py, self._Pz)
+end
+
+function FreeBody:getVelocity()
+	return v3(self._px/self._mass, self._py/self._mass, self._pz/self._mass)
+end
+
+function FreeBody:getGravity()
+	return v3(self._gx, self._gy, self._gz)
+end
+
+function FreeBody:getMomentum()
+	return v3(self._px, self._py, self._pz)
+end
+
+function FreeBody:getAngularMomentum()
+	return v3(self._Lx, self._Ly, self._Lz)
+end
+
+function FreeBody:getAngularVelocity()
+	return v3(localTransform(
+		self._Txx, self._Tyy, self._Tzz,
+		self._Txy, self._Tyz, self._Tzx,
+		self._Rw, self._Rx, self._Ry, self._Rz,
+		self._Lx, self._Ly, self._Lz
+		))
+end
+
+function FreeBody:getCFrame()
+	return cf(self._Px, self._Py, self._Pz, self._Rx, self._Ry, self._Rz, self._Rw)
+end
+
+function FreeBody:getOrientation()
+	return cf(0, 0, 0, self._Rx, self._Ry, self._Rz, self._Rw)
+end
+
+function FreeBody:getMass()
+	return self._mass
+end
+
+function FreeBody:getMomentOfInertia()
+	return
+		self._Ixx, self._Iyy, self._Izz,
+		self._Ixy, self._Iyz, self._Izx
+end
+
+function FreeBody:getNextRotation(
+	Rw, Rx, Ry, Rz,
+	dt
+)
+	local Dw, Dx, Dy, Dz = getRotationDerivative(
+		self._Txx, self._Tyy, self._Tzz,
+		self._Txy, self._Tyz, self._Tzx,
+		Rw, Rx, Ry, Rz,
+		self._Lx, self._Ly, self._Lz
+	)
+
+	local Sw, Sx, Sy, Sz = getRotationSecondDerivative(
+		self._Txx, self._Tyy, self._Tzz,
+		self._Txy, self._Tyz, self._Tzx,
+		Rw, Rx, Ry, Rz,
+		Dw, Dx, Dy, Dz,
+		self._Lx, self._Ly, self._Lz
+	)
+
+	return unitQuat(
+		Rw + dt*Dw + dt*dt/2*Sw,
+		Rx + dt*Dx + dt*dt/2*Sx,
+		Ry + dt*Dy + dt*dt/2*Sy,
+		Rz + dt*Dz + dt*dt/2*Sz
+	)
+end
+
+function FreeBody:step(dt)
+	local Rw, Rx, Ry, Rz = self._Rw, self._Rx, self._Ry, self._Rz
+	local Nw, Nx, Ny, Nz = self._Rw, self._Rx, self._Ry, self._Rz
+	for i = 1, 10000 do
+		Nw, Nx, Ny, Nz = self:getNextRotation(Nw, Nx, Ny, Nz, dt/10000)
+	end
+
+	self._Rw, self._Rx, self._Ry, self._Rz = Nw, Nx, Ny, Nz
+
+	local ax, ay, az = transformVecByQuat(Rw, Rx, Ry, Rz, self._cx, self._cy, self._cz)
+	local bx, by, bz = transformVecByQuat(Nw, Nx, Ny, Nz, self._cx, self._cy, self._cz)
+
+	self._Px = self._Px + ax - bx + dt/self._mass*self._px + dt*dt/2*self._gx
+	self._Py = self._Py + ay - by + dt/self._mass*self._py + dt*dt/2*self._gy
+	self._Pz = self._Pz + az - bz + dt/self._mass*self._pz + dt*dt/2*self._gz
+
+	self._px = self._px + dt*self._mass*self._gx
+	self._py = self._py + dt*self._mass*self._gy
+	self._pz = self._pz + dt*self._mass*self._gz
+end
+
+--impulse origin
+--impulse impulse
+function FreeBody:impulse(i, I)
+	local Ix, Iy, Iz = I.x, I.y, I.z
+
+	local cx, cy, cz = transformVecByQuat(self._Rw, self._Rx, self._Ry, self._Rz, self._cx, self._cy, self._cz)
+
+	local rx = i.x - (self._Px + cx)
+	local ry = i.y - (self._Py + cy)
+	local rz = i.z - (self._Pz + cz)
+
+	local Jx = ry*Iz - rz*Iy
+	local Jy = rz*Ix - rx*Iz
+	local Jz = rx*Iy - ry*Ix
+
+	self._Lx = self._Lx + Jx
+	self._Ly = self._Ly + Jy
+	self._Lz = self._Lz + Jz
+
+	self._px = self._px + Ix
+	self._py = self._py + Iy
+	self._pz = self._pz + Iz
+end
+
+function FreeBody:impulseRelative(i, I)
+	local rx, ry, rz = transformVecByQuat(self._Rw, self._Rx, self._Ry, self._Rz, i.x, i.y, i.z)
+	local Ix, Iy, Iz = transformVecByQuat(self._Rw, self._Rx, self._Ry, self._Rz, I.x, I.y, I.z)
+	local cx, cy, cz = transformVecByQuat(self._Rw, self._Rx, self._Ry, self._Rz, self._cx, self._cy, self._cz)
+
+	rx = rx - cx
+	ry = ry - cy
+	rz = rz - cz
+
+	local Jx = ry*Iz - rz*Iy
+	local Jy = rz*Ix - rx*Iz
+	local Jz = rx*Iy - ry*Ix
+
+	self._Lx = self._Lx + Jx
+	self._Ly = self._Ly + Jy
+	self._Lz = self._Lz + Jz
+
+	self._px = self._px + Ix
+	self._py = self._py + Iy
+	self._pz = self._pz + Iz
+end
+
+local part = script.Parent
+
+local thing = FreeBody.new()
+thing:setShape(
+	part.Size*Vector3.new(1/2, 0, 0),
+	part.Size*Vector3.new(0, 1/2, 0),
+	part.Size*Vector3.new(0, 0, 1/2),
+	1
+)
+--thing:setAngularVelocity(Vector3.new(0, 0.04, 6.28318))
+--thing:setVelocity(Vector3.new(0, 1, 0))
+thing:setPosition(Vector3.new(-10, 2, 5))
+thing:setGravity(Vector3.new(0, -10, 0))
+
+
+local t = 0
+local lastt = tick()
+local step = 1/6000
+game:GetService("RunService").Heartbeat:Connect(function(_, dt)
+	local nextt = tick()
+	debug.profilebegin("steps")
+	do
+		--debug.profilebegin("step")
+		lastt = lastt + step
+		do
+			local g = Vector3.new(0, 10, 0)
+			local i = thing:getCFrame()*(part.Size/2)
+			local d = g - i
+			thing:impulse(i, 10*step*thing:getMass()*d)
+		end
+		do
+			local i = thing:getCFrame().p
+			thing:impulse(i, -0.5*step*thing:getMass()*thing:getVelocity())
+		end
+
+		thing:step(step)
+		--debug.profileend()
+	end
+	debug.profileend()
+	--print(thing:getAngularVelocity():Dot(thing:getAngularMomentum()))
+	--print(thing:getVelocity())
+	part.CFrame = thing:getCFrame()
+end)]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b500003184</UniqueId>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Part" referent="RBX2AF91678E4A14B3F9BBE8569C3B9FD02">
+			<Properties>
+				<bool name="Anchored">true</bool>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<CoordinateFrame name="CFrame">
+					<X>-60</X>
+					<Y>0.5</Y>
+					<Z>-10</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<bool name="CanQuery">true</bool>
+				<bool name="CanTouch">true</bool>
+				<bool name="CastShadow">true</bool>
+				<string name="CollisionGroup">Default</string>
+				<int name="CollisionGroupId">0</int>
+				<Color3uint8 name="Color3uint8">4283144011</Color3uint8>
+				<PhysicalProperties name="CustomPhysicalProperties">
+					<CustomPhysics>false</CustomPhysics>
+				</PhysicalProperties>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<bool name="Massless">false</bool>
+				<token name="Material">256</token>
+				<string name="MaterialVariantSerialized"></string>
+				<string name="Name">Part</string>
+				<CoordinateFrame name="PivotOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<int name="RootPriority">0</int>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b500003186</UniqueId>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>4</X>
+					<Y>1</Y>
+					<Z>2</Z>
+				</Vector3>
+			</Properties>
+			<Item class="Script" referent="RBX052272020A3E49F598E7EDE386E88BD7">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<bool name="Disabled">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">2nd</string>
+					<token name="RunContext">0</token>
+					<string name="ScriptGuid">{739FF8E4-A63D-4CD0-833E-DB0E29482BC2}</string>
+					<ProtectedString name="Source"><![CDATA[--[[
+	body = FreeBody.new()
+
+	body:step(dt)
+		steps the body forward by dt time
+
+	body:impulse(i, I)
+		applies an impulse at the world point i with impulse I
+
+	body:impulseRelative(i, I)
+		applies an impulse at the relative point i with relative impulse I
+
+	body:setShape(u, v, w, density)
+		sets the shape to the parallelopiped defined with spanning vectors, u, v and w with density d
+		a u + b v + c w
+		-1 < (a, b, c) < 1
+
+	body:setCenterOfMass(c)
+		sets the center of mass offset
+
+	body:setPosition(P)
+
+	body:setVelocity(v)
+
+	body:setGravity(g)
+
+	body:setMomentum(p)
+
+	body:setAngularVelocity(w)
+
+	body:setAngularMomentum(L)
+
+	body:setCFrame(cframe)
+
+	c = body:getCenterOfMass()
+		gets the center of mass offset
+
+	P = body:getPosition()
+
+	v = body:getVelocity()
+
+	g = body:getGravity()
+
+	p = body:getMomentum()
+
+	L = body:getAngularMomentum()
+
+	w = body:getAngularVelocity()
+
+	cframe = body:getCFrame()
+
+	m = body:getMass()
+		returns the mass
+
+	Ixx, Iyy, Izz, Ixy, Iyz, Izx = body:getMomentOfInertia()
+		returns the moment of inertia's unique components
+--]]
+
+local v3  = Vector3.new
+local cf  = CFrame.new
+local cos = math.cos
+local sin = math.sin
+
+local function mulQuatQuat(
+	Aw, Ax, Ay, Az,
+	Bw, Bx, By, Bz
+)
+	return
+		Aw*Bw - Ax*Bx - Ay*By - Az*Bz,
+		Ax*Bw + Aw*Bx - Az*By + Ay*Bz,
+		Ay*Bw + Az*Bx + Aw*By - Ax*Bz,
+		Az*Bw - Ay*Bx + Ax*By + Aw*Bz
+end
+
+local function transformVecByQuat(Qw, Qx, Qy, Qz, vx, vy, vz)
+	local Q2 = Qw*Qw + Qx*Qx + Qy*Qy + Qz*Qz
+	if Q2 == 0 then
+		return vx, vy, vz
+	else
+		local Vw = Qx*vx + Qy*vy + Qz*vz
+		local Vx = Qw*vx + Qy*vz - Qz*vy
+		local Vy = Qw*vy + Qz*vx - Qx*vz
+		local Vz = Qw*vz + Qx*vy - Qy*vx
+		return
+			(Qx*Vw + Qw*Vx - Qz*Vy + Qy*Vz)/Q2,
+			(Qy*Vw + Qz*Vx + Qw*Vy - Qx*Vz)/Q2, 
+			(Qz*Vw - Qy*Vx + Qx*Vy + Qw*Vz)/Q2
+	end
+end
+
+local function unitQuat(Qw, Qx, Qy, Qz)
+	local Q = (Qw*Qw + Qx*Qx + Qy*Qy + Qz*Qz)^0.5
+	if Q == 0 then
+		return 1, 0, 0, 0
+	else
+		return Qw/Q, Qx/Q, Qy/Q, Qz/Q
+	end
+end
+
+local function sqrtQuat(Qw, Qx, Qy, Qz)
+	local Q = (Qw*Qw + Qx*Qx + Qy*Qy + Qz*Qz)^0.5
+	return unitQuat(Qw + Q, Qx, Qy, Qz)
+end
+
+local function mulMatVec(
+	Axx, Ayx, Azx,
+	Axy, Ayy, Azy,
+	Axz, Ayz, Azz,
+	bx, by, bz
+)
+	return
+		Axx*bx + Ayx*by + Azx*bz,
+		Axy*bx + Ayy*by + Azy*bz,
+		Axz*bx + Ayz*by + Azz*bz
+end
+
+local function getRotationDerivative(
+	Txx, Tyy, Tzz,
+	Txy, Tyz, Tzx,
+	Rw, Rx, Ry, Rz,
+	Lx, Ly, Lz
+)
+	local lx, ly, lz = transformVecByQuat(Rw, -Rx, -Ry, -Rz, Lx, Ly, Lz)
+	local wx, wy, wz = mulMatVec(
+		Txx, Txy, Tzx,
+		Txy, Tyy, Tyz,
+		Tzx, Tyz, Tzz,
+		lx, ly, lz
+	)
+
+	return mulQuatQuat(Rw, Rx, Ry, Rz, 0, wx/2, wy/2, wz/2)
+end
+
+local function localTransform(
+	Txx, Tyy, Tzz,
+	Txy, Tyz, Tzx,
+	Rw, Rx, Ry, Rz,
+	Lx, Ly, Lz
+)
+	local lx, ly, lz = transformVecByQuat(Rw, -Rx, -Ry, -Rz, Lx, Ly, Lz)
+	local wx, wy, wz = mulMatVec(
+		Txx, Txy, Tzx,
+		Txy, Tyy, Tyz,
+		Tzx, Tyz, Tzz,
+		lx, ly, lz
+	)
+
+	return transformVecByQuat(Rw, Rx, Ry, Rz, wx, wy, wz)
+end
+
+local function invMat(
+	xx, yx, zx,
+	xy, yy, zy,
+	xz, yz, zz
+)
+	local det = zx*(xy*yz - xz*yy) + zy*(xz*yx - xx*yz) + zz*(xx*yy - xy*yx)
+	return
+		(yy*zz - yz*zy)/det, (yz*zx - yx*zz)/det, (yx*zy - yy*zx)/det,
+		(xz*zy - xy*zz)/det, (xx*zz - xz*zx)/det, (xy*zx - xx*zy)/det,
+		(xy*yz - xz*yy)/det, (xz*yx - xx*yz)/det, (xx*yy - xy*yx)/det
+end
+
+--[[
+	provides a simple way to construct an
+	arbitrary moment of inertia matrix
+
+	parallelepiped volume described as:
+		a*x + b*y + c*z
+		-1 < (a, b, c) < 1
+
+	I*w = momentum
+	I^-1*momentum = w
+--]]
+local function parallelepipedMoment(
+	xx, yx, zx,--i
+	xy, yy, zy,--j
+	xz, yz, zz,--k
+	density
+)
+	local ii = xx*xx + yx*yx + zx*zx
+	local jj = xy*xy + yy*yy + zy*zy
+	local kk = xz*xz + yz*yz + zz*zz
+	local ij = xx*xy + yx*yy + zx*zy
+	local jk = xy*xz + yy*yz + zy*zz
+	local ki = xz*xx + yz*yx + zz*zx
+	local det = zx*(xy*yz - xz*yy) + zy*(xz*yx - xx*yz) + zz*(xx*yy - xy*yx)
+	local mass = 8*det*density
+	local c = 1/3*mass
+	return
+		c*(jj + kk), c*(ii + kk), c*(ii + jj),
+		-c*ij, -c*jk, -c*ki,
+		mass
+end
+
+local FreeBody = {}
+FreeBody.__index = FreeBody
+
+do
+	local base = FreeBody
+	--base._Fx, base._Fy, base._Fz = 0, 0, 0--force
+	base._gx, base._gy, base._gz = 0, 0, 0--gravity
+	base._px, base._py, base._pz = 0, 0, 0--momentum
+	base._Px, base._Py, base._Pz = 0, 0, 0--position
+	base._cx, base._cy, base._cz = 0, 0, 0--center of mass
+
+	base._Rw, base._Rx, base._Ry, base._Rz = 1, 0, 0, 0--rotation
+
+	--base._Tx, base._Ty, base._Tz = 0, 0, 0--torque
+	base._Lx, base._Ly, base._Lz = 0, 0, 0--angular momentum
+
+	base._mass = 1
+
+	base._Ixx, base._Iyy, base._Izz = 1, 1, 1
+	base._Ixy, base._Iyz, base._Izx = 0, 0, 0--moment of inertia
+
+	base._Txx, base._Tyy, base._Tzz = 1, 1, 1
+	base._Txy, base._Tyz, base._Tzx = 0, 0, 0--inverse moment of inertia
+end
+
+function FreeBody.new()
+	return setmetatable({}, FreeBody)
+end
+
+function FreeBody:setShape(u, v, w, density)
+	local
+	Ixx, Iyy, Izz,
+	Ixy, Iyz, Izx,
+	mass = parallelepipedMoment(
+		u.x, v.x, w.x,
+		u.y, v.y, w.y,
+		u.z, v.z, w.z,
+		density or 1
+	)
+	local
+	Txx, Txy, Tzx,
+	Txy, Tyy, Tyz,
+	Tzx, Tyz, Tzz = invMat(
+		Ixx, Ixy, Izx,
+		Ixy, Iyy, Iyz,
+		Izx, Iyz, Izz
+	)
+	self._Ixx, self._Iyy, self._Izz = Ixx, Iyy, Izz
+	self._Ixy, self._Iyz, self._Izx = Ixy, Iyz, Izx
+	self._Txx, self._Tyy, self._Tzz = Txx, Tyy, Tzz
+	self._Txy, self._Tyz, self._Tzx = Txy, Tyz, Tzx
+	self._mass = mass
+end
+
+function FreeBody:setCenterOfMass(c)
+	self._cx, self._cy, self._cz = c.x, c.y, c.z
+end
+
+function FreeBody:setPosition(P)
+	self._Px, self._Py, self._Pz = P.x, P.y, P.z
+end
+
+function FreeBody:setVelocity(v)
+	self._px, self._py, self._pz = self._mass*v.x, self._mass*v.y, self._mass*v.z
+end
+
+function FreeBody:setGravity(g)
+	self._gx, self._gy, self._gz = g.x, g.y, g.z
+end
+
+function FreeBody:setMomentum(p)
+	self._px, self._py, self._pz = p.x, p.y, p.z
+end
+
+function FreeBody:setAngularVelocity(w)
+	self._Lx, self._Ly, self._Lz = localTransform(
+		self._Ixx, self._Iyy, self._Izz,
+		self._Ixy, self._Iyz, self._Izx,
+		self._Rw, self._Rx, self._Ry, self._Rz,
+		w.x, w.y, w.z
+	)
+end
+
+function FreeBody:setAngularMomentum(L)
+	self._Lx, self._Ly, self._Lz = L.x, L.y, L.z
+end
+
+local function CFtoQ(cf)
+	local a, t = cf:ToAxisAngle()
+	local c = cos(t/2)
+	local s = sin(t/2)
+	return
+		cf.x, cf.y, cf.z,
+		c, s*a.x, s*a.y, s*a.z
+end
+
+function FreeBody:setCFrame(cframe)
+	self._px, self._py, self._pz, self._Rw, self._Rx, self._Ry, self._Rz = CFtoQ(cframe)
+end
+
+function FreeBody:getCenterOfMass()
+	return v3(self._cx, self._cy, self._cz)
+end
+
+function FreeBody:getCenterOfMassWorld()
+	local ox, oy, oz = transformVecByQuat(self._Rw, self._Rx, self._Ry, self._Rz, self._cx, self._cy, self._cz)
+	return v3(self._Px + ox, self._Py + oy, self._Pz + oz)
+end
+
+function FreeBody:getPosition()
+	return v3(self._Px, self._Py, self._Pz)
+end
+
+function FreeBody:getVelocity()
+	return v3(self._px/self._mass, self._py/self._mass, self._pz/self._mass)
+end
+
+function FreeBody:getGravity()
+	return v3(self._gx, self._gy, self._gz)
+end
+
+function FreeBody:getMomentum()
+	return v3(self._px, self._py, self._pz)
+end
+
+function FreeBody:getAngularMomentum()
+	return v3(self._Lx, self._Ly, self._Lz)
+end
+
+function FreeBody:getAngularVelocity()
+	return v3(localTransform(
+		self._Txx, self._Tyy, self._Tzz,
+		self._Txy, self._Tyz, self._Tzx,
+		self._Rw, self._Rx, self._Ry, self._Rz,
+		self._Lx, self._Ly, self._Lz
+		))
+end
+
+function FreeBody:getCFrame()
+	return cf(self._Px, self._Py, self._Pz, self._Rx, self._Ry, self._Rz, self._Rw)
+end
+
+function FreeBody:getOrientation()
+	return cf(0, 0, 0, self._Rx, self._Ry, self._Rz, self._Rw)
+end
+
+function FreeBody:getMass()
+	return self._mass
+end
+
+function FreeBody:getMomentOfInertia()
+	return
+		self._Ixx, self._Iyy, self._Izz,
+		self._Ixy, self._Iyz, self._Izx
+end
+
+function FreeBody:getNextRotation(
+	Rw, Rx, Ry, Rz,
+	dt
+)
+	local Dw, Dx, Dy, Dz = getRotationDerivative(
+		self._Txx, self._Tyy, self._Tzz,
+		self._Txy, self._Tyz, self._Tzx,
+		Rw, Rx, Ry, Rz,
+		self._Lx, self._Ly, self._Lz
+	)
+
+	return unitQuat(
+		Rw + dt*Dw,
+		Rx + dt*Dx,
+		Ry + dt*Dy,
+		Rz + dt*Dz
+	)
+end
+
+function FreeBody:step(dt)
+	local Rw, Rx, Ry, Rz = self._Rw, self._Rx, self._Ry, self._Rz
+	local w1, x1, y1, z1 = self:getNextRotation(Rw, Rx, Ry, Rz, dt)
+	local w2, x2, y2, z2 = self:getNextRotation(w1, x1, y1, z1, -dt)
+	local Ew, Ex, Ey, Ez = sqrtQuat(mulQuatQuat(Rw, -Rx, -Ry, -Rz, w2, x2, y2, z2))
+	local Nw, Nx, Ny, Nz = mulQuatQuat(w1, x1, y1, z1, Ew, -Ex, -Ey, -Ez)--eksdee
+
+	self._Rw, self._Rx, self._Ry, self._Rz = Nw, Nx, Ny, Nz
+
+	local ax, ay, az = transformVecByQuat(Rw, Rx, Ry, Rz, self._cx, self._cy, self._cz)
+	local bx, by, bz = transformVecByQuat(Nw, Nx, Ny, Nz, self._cx, self._cy, self._cz)
+
+	self._Px = self._Px + ax - bx + dt/self._mass*self._px + dt*dt/2*self._gx
+	self._Py = self._Py + ay - by + dt/self._mass*self._py + dt*dt/2*self._gy
+	self._Pz = self._Pz + az - bz + dt/self._mass*self._pz + dt*dt/2*self._gz
+
+	self._px = self._px + dt*self._mass*self._gx
+	self._py = self._py + dt*self._mass*self._gy
+	self._pz = self._pz + dt*self._mass*self._gz
+end
+
+--impulse origin
+--impulse impulse
+function FreeBody:impulse(i, I)
+	local Ix, Iy, Iz = I.x, I.y, I.z
+
+	local cx, cy, cz = transformVecByQuat(self._Rw, self._Rx, self._Ry, self._Rz, self._cx, self._cy, self._cz)
+
+	local rx = i.x - (self._Px + cx)
+	local ry = i.y - (self._Py + cy)
+	local rz = i.z - (self._Pz + cz)
+
+	local Jx = ry*Iz - rz*Iy
+	local Jy = rz*Ix - rx*Iz
+	local Jz = rx*Iy - ry*Ix
+
+	self._Lx = self._Lx + Jx
+	self._Ly = self._Ly + Jy
+	self._Lz = self._Lz + Jz
+
+	self._px = self._px + Ix
+	self._py = self._py + Iy
+	self._pz = self._pz + Iz
+end
+
+function FreeBody:impulseRelative(i, I)
+	local rx, ry, rz = transformVecByQuat(self._Rw, self._Rx, self._Ry, self._Rz, i.x, i.y, i.z)
+	local Ix, Iy, Iz = transformVecByQuat(self._Rw, self._Rx, self._Ry, self._Rz, I.x, I.y, I.z)
+	local cx, cy, cz = transformVecByQuat(self._Rw, self._Rx, self._Ry, self._Rz, self._cx, self._cy, self._cz)
+
+	rx = rx - cx
+	ry = ry - cy
+	rz = rz - cz
+
+	local Jx = ry*Iz - rz*Iy
+	local Jy = rz*Ix - rx*Iz
+	local Jz = rx*Iy - ry*Ix
+
+	self._Lx = self._Lx + Jx
+	self._Ly = self._Ly + Jy
+	self._Lz = self._Lz + Jz
+
+	self._px = self._px + Ix
+	self._py = self._py + Iy
+	self._pz = self._pz + Iz
+end
+
+local part = script.Parent
+
+local thing = FreeBody.new()
+thing:setShape(
+	part.Size*Vector3.new(1/2, 0, 0),
+	part.Size*Vector3.new(0, 1/2, 0),
+	part.Size*Vector3.new(0, 0, 1/2),
+	1
+)
+--thing:setAngularVelocity(Vector3.new(0, 0.04, 6.28318))
+--thing:setVelocity(Vector3.new(0, 1, 0))
+thing:setPosition(Vector3.new(-10, 2, 5))
+thing:setGravity(Vector3.new(0, -10, 0))
+
+
+local t = 0
+local lastt = tick()
+local step = 1/6000
+game:GetService("RunService").Heartbeat:Connect(function(_, dt)
+	local nextt = tick()
+	debug.profilebegin("steps")
+	do
+		--debug.profilebegin("step")
+		lastt = lastt + step
+		do
+			local g = Vector3.new(0, 10, 0)
+			local i = thing:getCFrame()*(part.Size/2)
+			local d = g - i
+			thing:impulse(i, 10*step*thing:getMass()*d)
+		end
+		do
+			local i = thing:getCFrame().p
+			thing:impulse(i, -0.5*step*thing:getMass()*thing:getVelocity())
+		end
+		
+		thing:step(step)
+		--debug.profileend()
+	end
+	debug.profileend()
+	--print(thing:getAngularVelocity():Dot(thing:getAngularMomentum()))
+	--print(thing:getVelocity())
+	part.CFrame = thing:getCFrame()
+end)]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b500003187</UniqueId>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Part" referent="RBXCA645E08E8EE4992A20CB5883447A040">
+			<Properties>
+				<bool name="Anchored">true</bool>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<CoordinateFrame name="CFrame">
+					<X>-45</X>
+					<Y>2</Y>
+					<Z>-5</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<bool name="CanQuery">true</bool>
+				<bool name="CanTouch">true</bool>
+				<bool name="CastShadow">true</bool>
+				<string name="CollisionGroup">Default</string>
+				<int name="CollisionGroupId">0</int>
+				<Color3uint8 name="Color3uint8">4279069100</Color3uint8>
+				<PhysicalProperties name="CustomPhysicalProperties">
+					<CustomPhysics>false</CustomPhysics>
+				</PhysicalProperties>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<bool name="Massless">false</bool>
+				<token name="Material">256</token>
+				<string name="MaterialVariantSerialized"></string>
+				<string name="Name">Part</string>
+				<CoordinateFrame name="PivotOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<int name="RootPriority">0</int>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b500003188</UniqueId>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>4</X>
+					<Y>1</Y>
+					<Z>2</Z>
+				</Vector3>
+			</Properties>
+			<Item class="Script" referent="RBX3F925EC314884C679C673BFC9281E31F">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<bool name="Disabled">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">3rd</string>
+					<token name="RunContext">0</token>
+					<string name="ScriptGuid">{80B988A6-B1A2-4899-8620-EA8615A0E309}</string>
+					<ProtectedString name="Source"><![CDATA[--[[
+	body = FreeBody.new()
+
+	body:step(dt)
+		steps the body forward by dt time
+
+	body:impulse(i, I)
+		applies an impulse at the world point i with impulse I
+
+	body:impulseRelative(i, I)
+		applies an impulse at the relative point i with relative impulse I
+
+	body:setShape(u, v, w, density)
+		sets the shape to the parallelopiped defined with spanning vectors, u, v and w with density d
+		a u + b v + c w
+		-1 < (a, b, c) < 1
+
+	body:setCenterOfMass(c)
+		sets the center of mass offset
+
+	body:setPosition(P)
+
+	body:setVelocity(v)
+
+	body:setGravity(g)
+
+	body:setMomentum(p)
+
+	body:setAngularVelocity(w)
+
+	body:setAngularMomentum(L)
+
+	body:setCFrame(cframe)
+
+	c = body:getCenterOfMass()
+		gets the center of mass offset
+
+	P = body:getPosition()
+
+	v = body:getVelocity()
+
+	g = body:getGravity()
+
+	p = body:getMomentum()
+
+	L = body:getAngularMomentum()
+
+	w = body:getAngularVelocity()
+
+	cframe = body:getCFrame()
+
+	m = body:getMass()
+		returns the mass
+
+	Ixx, Iyy, Izz, Ixy, Iyz, Izx = body:getMomentOfInertia()
+		returns the moment of inertia's unique components
+--]]
+
+local v3  = Vector3.new
+local cf  = CFrame.new
+local cos = math.cos
+local sin = math.sin
+
+local function mulQuatQuat(
+	Aw, Ax, Ay, Az,
+	Bw, Bx, By, Bz
+)
+	return
+		Aw*Bw - Ax*Bx - Ay*By - Az*Bz,
+	Ax*Bw + Aw*Bx - Az*By + Ay*Bz,
+	Ay*Bw + Az*Bx + Aw*By - Ax*Bz,
+	Az*Bw - Ay*Bx + Ax*By + Aw*Bz
+end
+
+local function transformVecByQuat(Qw, Qx, Qy, Qz, vx, vy, vz)
+	local Q2 = Qw*Qw + Qx*Qx + Qy*Qy + Qz*Qz
+	if Q2 == 0 then
+		return vx, vy, vz
+	else
+		local Vw = Qx*vx + Qy*vy + Qz*vz
+		local Vx = Qw*vx + Qy*vz - Qz*vy
+		local Vy = Qw*vy + Qz*vx - Qx*vz
+		local Vz = Qw*vz + Qx*vy - Qy*vx
+		return
+			(Qx*Vw + Qw*Vx - Qz*Vy + Qy*Vz)/Q2,
+		(Qy*Vw + Qz*Vx + Qw*Vy - Qx*Vz)/Q2, 
+		(Qz*Vw - Qy*Vx + Qx*Vy + Qw*Vz)/Q2
+	end
+end
+
+local function unitQuat(Qw, Qx, Qy, Qz)
+	local Q = (Qw*Qw + Qx*Qx + Qy*Qy + Qz*Qz)^0.5
+	if Q == 0 then
+		return 1, 0, 0, 0
+	else
+		return Qw/Q, Qx/Q, Qy/Q, Qz/Q
+	end
+end
+
+local function sqrtQuat(Qw, Qx, Qy, Qz)
+	local Q = (Qw*Qw + Qx*Qx + Qy*Qy + Qz*Qz)^0.5
+	return unitQuat(Qw + Q, Qx, Qy, Qz)
+end
+
+local function mulMatVec(
+	Axx, Ayx, Azx,
+	Axy, Ayy, Azy,
+	Axz, Ayz, Azz,
+	bx, by, bz
+)
+	return
+		Axx*bx + Ayx*by + Azx*bz,
+	Axy*bx + Ayy*by + Azy*bz,
+	Axz*bx + Ayz*by + Azz*bz
+end
+
+local function getRotationDerivative(
+	Txx, Tyy, Tzz,
+	Txy, Tyz, Tzx,
+	Rw, Rx, Ry, Rz,
+	Lx, Ly, Lz
+)
+	local lx, ly, lz = transformVecByQuat(Rw, -Rx, -Ry, -Rz, Lx, Ly, Lz)
+	local wx, wy, wz = mulMatVec(
+		Txx, Txy, Tzx,
+		Txy, Tyy, Tyz,
+		Tzx, Tyz, Tzz,
+		lx, ly, lz
+	)
+
+	return mulQuatQuat(Rw, Rx, Ry, Rz, 0, wx/2, wy/2, wz/2)
+end
+
+local function getRotationSecondDerivative(
+	Txx, Tyy, Tzz,
+	Txy, Tyz, Tzx,
+	Rw, Rx, Ry, Rz,
+	Dw, Dx, Dy, Dz,
+	Lx, Ly, Lz
+)
+	--R ** (T * (I**L**D + E**L**R)) + D**(T * (I ** L ** R))
+	local lx, ly, lz = transformVecByQuat(Rw, -Rx, -Ry, -Rz, Lx, Ly, Lz)
+	local wx, wy, wz = mulMatVec(
+		Txx, Txy, Tzx,
+		Txy, Tyy, Tyz,
+		Tzx, Tyz, Tzz,
+		lx, ly, lz
+	)
+
+	local _, ax, ay, az = mulQuatQuat(Rw, -Rx, -Ry, -Rz, mulQuatQuat(0, Lx, Ly, Lz, Dw, Dx, Dy, Dz))
+	local _, bx, by, bz = mulQuatQuat(Dw, -Dx, -Dy, -Dz, mulQuatQuat(0, Lx, Ly, Lz, Rw, Rx, Ry, Rz))
+	local cx, cy, cz = mulMatVec(
+		Txx, Txy, Tzx,
+		Txy, Tyy, Tyz,
+		Tzx, Tyz, Tzz,
+		ax + bx, ay + by, az + bz
+	)
+
+	local dw, dx, dy, dz = mulQuatQuat(Rw, Rx, Ry, Rz, 0, cx, cy, cz)
+	local ew, ex, ey, ez = mulQuatQuat(Dw, Dx, Dy, Dz, 0, wx, wy, wz)
+
+	return (dw + ew)/2, (dx + ex)/2, (dy + ey)/2, (dz + ez)/2
+end
+
+local function getRotationThirdDerivative(
+	Txx, Tyy, Tzz,
+	Txy, Tyz, Tzx,
+	Rw, Rx, Ry, Rz,
+	Dw, Dx, Dy, Dz,
+	Sw, Sx, Sy, Sz,
+	Lx, Ly, Lz
+)
+	--R ** (T * (I**L**D + E**L**R)) + D**(T * (I ** L ** R))
+	local wx0, wy0, wz0 do
+		local lx, ly, lz = transformVecByQuat(Rw, -Rx, -Ry, -Rz, Lx, Ly, Lz)
+		wx0, wy0, wz0 = mulMatVec(
+			Txx, Txy, Tzx,
+			Txy, Tyy, Tyz,
+			Tzx, Tyz, Tzz,
+			lx, ly, lz
+		)
+	end
+
+	local wx1, wy1, wz1 do
+		local _, ax, ay, az = mulQuatQuat(Rw, -Rx, -Ry, -Rz, mulQuatQuat(0, Lx, Ly, Lz, Dw, Dx, Dy, Dz))
+		local _, bx, by, bz = mulQuatQuat(Dw, -Dx, -Dy, -Dz, mulQuatQuat(0, Lx, Ly, Lz, Rw, Rx, Ry, Rz))
+		wx1, wy1, wz1 = mulMatVec(
+			Txx, Txy, Tzx,
+			Txy, Tyy, Tyz,
+			Tzx, Tyz, Tzz,
+			ax + bx, ay + by, az + bz
+		)
+	end
+
+	local wx2, wy2, wz2 do
+		local _, ax, ay, az = mulQuatQuat(Rw, -Rx, -Ry, -Rz, mulQuatQuat(0, Lx, Ly, Lz, Sw, Sx, Sy, Sz))
+		local _, bx, by, bz = mulQuatQuat(Dw, -Dx, -Dy, -Dz, mulQuatQuat(0, 2*Lx, 2*Ly, 2*Lz, Dw, Dx, Dy, Dz))
+		local _, cx, cy, cz = mulQuatQuat(Sw, -Sx, -Sy, -Sz, mulQuatQuat(0, Lx, Ly, Lz, Rw, Rx, Ry, Rz))
+		wx2, wy2, wz2 = mulMatVec(
+			Txx, Txy, Tzx,
+			Txy, Tyy, Tyz,
+			Tzx, Tyz, Tzz,
+			ax + bx + cx, ay + by + cy, az + bz + cz
+		)
+	end
+
+
+	local dw, dx, dy, dz = mulQuatQuat(Rw, Rx, Ry, Rz, 0, wx2, wy2, wz2)
+	local ew, ex, ey, ez = mulQuatQuat(Dw, Dx, Dy, Dz, 0, 2*wx1, 2*wy1, 2*wz1)
+	local fw, fx, fy, fz = mulQuatQuat(Sw, Sx, Sy, Sz, 0, wx0, wy0, wz0)
+
+	return (dw + ew + fw)/2, (dx + ex + fx)/2, (dy + ey + fy)/2, (dz + ez + fz)/2
+end
+
+local function localTransform(
+	Txx, Tyy, Tzz,
+	Txy, Tyz, Tzx,
+	Rw, Rx, Ry, Rz,
+	Lx, Ly, Lz
+)
+	local lx, ly, lz = transformVecByQuat(Rw, -Rx, -Ry, -Rz, Lx, Ly, Lz)
+	local wx, wy, wz = mulMatVec(
+		Txx, Txy, Tzx,
+		Txy, Tyy, Tyz,
+		Tzx, Tyz, Tzz,
+		lx, ly, lz
+	)
+
+	return transformVecByQuat(Rw, Rx, Ry, Rz, wx, wy, wz)
+end
+
+local function invMat(
+	xx, yx, zx,
+	xy, yy, zy,
+	xz, yz, zz
+)
+	local det = zx*(xy*yz - xz*yy) + zy*(xz*yx - xx*yz) + zz*(xx*yy - xy*yx)
+	return
+		(yy*zz - yz*zy)/det, (yz*zx - yx*zz)/det, (yx*zy - yy*zx)/det,
+	(xz*zy - xy*zz)/det, (xx*zz - xz*zx)/det, (xy*zx - xx*zy)/det,
+	(xy*yz - xz*yy)/det, (xz*yx - xx*yz)/det, (xx*yy - xy*yx)/det
+end
+
+--[[
+	provides a simple way to construct an
+	arbitrary moment of inertia matrix
+
+	parallelepiped volume described as:
+		a*x + b*y + c*z
+		-1 < (a, b, c) < 1
+
+	I*w = momentum
+	I^-1*momentum = w
+--]]
+local function parallelepipedMoment(
+	xx, yx, zx,--i
+	xy, yy, zy,--j
+	xz, yz, zz,--k
+	density
+)
+	local ii = xx*xx + yx*yx + zx*zx
+	local jj = xy*xy + yy*yy + zy*zy
+	local kk = xz*xz + yz*yz + zz*zz
+	local ij = xx*xy + yx*yy + zx*zy
+	local jk = xy*xz + yy*yz + zy*zz
+	local ki = xz*xx + yz*yx + zz*zx
+	local det = zx*(xy*yz - xz*yy) + zy*(xz*yx - xx*yz) + zz*(xx*yy - xy*yx)
+	local mass = 8*det*density
+	local c = 1/3*mass
+	return
+		c*(jj + kk), c*(ii + kk), c*(ii + jj),
+	-c*ij, -c*jk, -c*ki,
+	mass
+end
+
+local FreeBody = {}
+FreeBody.__index = FreeBody
+
+do
+	local base = FreeBody
+	--base._Fx, base._Fy, base._Fz = 0, 0, 0--force
+	base._gx, base._gy, base._gz = 0, 0, 0--gravity
+	base._px, base._py, base._pz = 0, 0, 0--momentum
+	base._Px, base._Py, base._Pz = 0, 0, 0--position
+	base._cx, base._cy, base._cz = 0, 0, 0--center of mass
+
+	base._Rw, base._Rx, base._Ry, base._Rz = 1, 0, 0, 0--rotation
+
+	--base._Tx, base._Ty, base._Tz = 0, 0, 0--torque
+	base._Lx, base._Ly, base._Lz = 0, 0, 0--angular momentum
+
+	base._mass = 1
+
+	base._Ixx, base._Iyy, base._Izz = 1, 1, 1
+	base._Ixy, base._Iyz, base._Izx = 0, 0, 0--moment of inertia
+
+	base._Txx, base._Tyy, base._Tzz = 1, 1, 1
+	base._Txy, base._Tyz, base._Tzx = 0, 0, 0--inverse moment of inertia
+end
+
+function FreeBody.new()
+	return setmetatable({}, FreeBody)
+end
+
+function FreeBody:setShape(u, v, w, density)
+	local
+	Ixx, Iyy, Izz,
+	Ixy, Iyz, Izx,
+	mass = parallelepipedMoment(
+		u.x, v.x, w.x,
+		u.y, v.y, w.y,
+		u.z, v.z, w.z,
+		density or 1
+	)
+	local
+	Txx, Txy, Tzx,
+	Txy, Tyy, Tyz,
+	Tzx, Tyz, Tzz = invMat(
+		Ixx, Ixy, Izx,
+		Ixy, Iyy, Iyz,
+		Izx, Iyz, Izz
+	)
+	self._Ixx, self._Iyy, self._Izz = Ixx, Iyy, Izz
+	self._Ixy, self._Iyz, self._Izx = Ixy, Iyz, Izx
+	self._Txx, self._Tyy, self._Tzz = Txx, Tyy, Tzz
+	self._Txy, self._Tyz, self._Tzx = Txy, Tyz, Tzx
+	self._mass = mass
+end
+
+function FreeBody:setCenterOfMass(c)
+	self._cx, self._cy, self._cz = c.x, c.y, c.z
+end
+
+function FreeBody:setPosition(P)
+	self._Px, self._Py, self._Pz = P.x, P.y, P.z
+end
+
+function FreeBody:setVelocity(v)
+	self._px, self._py, self._pz = self._mass*v.x, self._mass*v.y, self._mass*v.z
+end
+
+function FreeBody:setGravity(g)
+	self._gx, self._gy, self._gz = g.x, g.y, g.z
+end
+
+function FreeBody:setMomentum(p)
+	self._px, self._py, self._pz = p.x, p.y, p.z
+end
+
+function FreeBody:setAngularVelocity(w)
+	self._Lx, self._Ly, self._Lz = localTransform(
+		self._Ixx, self._Iyy, self._Izz,
+		self._Ixy, self._Iyz, self._Izx,
+		self._Rw, self._Rx, self._Ry, self._Rz,
+		w.x, w.y, w.z
+	)
+end
+
+function FreeBody:setAngularMomentum(L)
+	self._Lx, self._Ly, self._Lz = L.x, L.y, L.z
+end
+
+local function CFtoQ(cf)
+	local a, t = cf:ToAxisAngle()
+	local c = cos(t/2)
+	local s = sin(t/2)
+	return
+		cf.x, cf.y, cf.z,
+	c, s*a.x, s*a.y, s*a.z
+end
+
+function FreeBody:setCFrame(cframe)
+	self._px, self._py, self._pz, self._Rw, self._Rx, self._Ry, self._Rz = CFtoQ(cframe)
+end
+
+function FreeBody:getCenterOfMass()
+	return v3(self._cx, self._cy, self._cz)
+end
+
+function FreeBody:getCenterOfMassWorld()
+	local ox, oy, oz = transformVecByQuat(self._Rw, self._Rx, self._Ry, self._Rz, self._cx, self._cy, self._cz)
+	return v3(self._Px + ox, self._Py + oy, self._Pz + oz)
+end
+
+function FreeBody:getPosition()
+	return v3(self._Px, self._Py, self._Pz)
+end
+
+function FreeBody:getVelocity()
+	return v3(self._px/self._mass, self._py/self._mass, self._pz/self._mass)
+end
+
+function FreeBody:getGravity()
+	return v3(self._gx, self._gy, self._gz)
+end
+
+function FreeBody:getMomentum()
+	return v3(self._px, self._py, self._pz)
+end
+
+function FreeBody:getAngularMomentum()
+	return v3(self._Lx, self._Ly, self._Lz)
+end
+
+function FreeBody:getAngularVelocity()
+	return v3(localTransform(
+		self._Txx, self._Tyy, self._Tzz,
+		self._Txy, self._Tyz, self._Tzx,
+		self._Rw, self._Rx, self._Ry, self._Rz,
+		self._Lx, self._Ly, self._Lz
+		))
+end
+
+function FreeBody:getCFrame()
+	return cf(self._Px, self._Py, self._Pz, self._Rx, self._Ry, self._Rz, self._Rw)
+end
+
+function FreeBody:getOrientation()
+	return cf(0, 0, 0, self._Rx, self._Ry, self._Rz, self._Rw)
+end
+
+function FreeBody:getMass()
+	return self._mass
+end
+
+function FreeBody:getMomentOfInertia()
+	return
+		self._Ixx, self._Iyy, self._Izz,
+	self._Ixy, self._Iyz, self._Izx
+end
+
+function FreeBody:getNextRotation(
+	Rw, Rx, Ry, Rz,
+	dt
+)
+	local Dw, Dx, Dy, Dz = getRotationDerivative(
+		self._Txx, self._Tyy, self._Tzz,
+		self._Txy, self._Tyz, self._Tzx,
+		Rw, Rx, Ry, Rz,
+		self._Lx, self._Ly, self._Lz
+	)
+
+	local Sw, Sx, Sy, Sz = getRotationSecondDerivative(
+		self._Txx, self._Tyy, self._Tzz,
+		self._Txy, self._Tyz, self._Tzx,
+		Rw, Rx, Ry, Rz,
+		Dw, Dx, Dy, Dz,
+		self._Lx, self._Ly, self._Lz
+	)
+
+	local Tw, Tx, Ty, Tz = getRotationThirdDerivative(
+		self._Txx, self._Tyy, self._Tzz,
+		self._Txy, self._Tyz, self._Tzx,
+		Rw, Rx, Ry, Rz,
+		Dw, Dx, Dy, Dz,
+		Sw, Sx, Sy, Sz,
+		self._Lx, self._Ly, self._Lz
+	)
+
+	return unitQuat(
+		Rw + dt*Dw + dt*dt/2*Sw + dt*dt*dt/6*Tw,
+		Rx + dt*Dx + dt*dt/2*Sx + dt*dt*dt/6*Tx,
+		Ry + dt*Dy + dt*dt/2*Sy + dt*dt*dt/6*Ty,
+		Rz + dt*Dz + dt*dt/2*Sz + dt*dt*dt/6*Tz
+	)
+end
+
+function FreeBody:step(dt)
+	local Rw, Rx, Ry, Rz = self._Rw, self._Rx, self._Ry, self._Rz
+	local Nw, Nx, Ny, Nz = self._Rw, self._Rx, self._Ry, self._Rz
+	for i = 1, 1 do
+		Nw, Nx, Ny, Nz = self:getNextRotation(Nw, Nx, Ny, Nz, dt/1)
+	end
+
+	self._Rw, self._Rx, self._Ry, self._Rz = Nw, Nx, Ny, Nz
+
+	local ax, ay, az = transformVecByQuat(Rw, Rx, Ry, Rz, self._cx, self._cy, self._cz)
+	local bx, by, bz = transformVecByQuat(Nw, Nx, Ny, Nz, self._cx, self._cy, self._cz)
+
+	self._Px = self._Px + ax - bx + dt/self._mass*self._px + dt*dt/2*self._gx
+	self._Py = self._Py + ay - by + dt/self._mass*self._py + dt*dt/2*self._gy
+	self._Pz = self._Pz + az - bz + dt/self._mass*self._pz + dt*dt/2*self._gz
+
+	self._px = self._px + dt*self._mass*self._gx
+	self._py = self._py + dt*self._mass*self._gy
+	self._pz = self._pz + dt*self._mass*self._gz
+end
+
+--impulse origin
+--impulse impulse
+function FreeBody:impulse(i, I)
+	local Ix, Iy, Iz = I.x, I.y, I.z
+
+	local cx, cy, cz = transformVecByQuat(self._Rw, self._Rx, self._Ry, self._Rz, self._cx, self._cy, self._cz)
+
+	local rx = i.x - (self._Px + cx)
+	local ry = i.y - (self._Py + cy)
+	local rz = i.z - (self._Pz + cz)
+
+	local Jx = ry*Iz - rz*Iy
+	local Jy = rz*Ix - rx*Iz
+	local Jz = rx*Iy - ry*Ix
+
+	self._Lx = self._Lx + Jx
+	self._Ly = self._Ly + Jy
+	self._Lz = self._Lz + Jz
+
+	self._px = self._px + Ix
+	self._py = self._py + Iy
+	self._pz = self._pz + Iz
+end
+
+function FreeBody:impulseRelative(i, I)
+	local rx, ry, rz = transformVecByQuat(self._Rw, self._Rx, self._Ry, self._Rz, i.x, i.y, i.z)
+	local Ix, Iy, Iz = transformVecByQuat(self._Rw, self._Rx, self._Ry, self._Rz, I.x, I.y, I.z)
+	local cx, cy, cz = transformVecByQuat(self._Rw, self._Rx, self._Ry, self._Rz, self._cx, self._cy, self._cz)
+
+	rx = rx - cx
+	ry = ry - cy
+	rz = rz - cz
+
+	local Jx = ry*Iz - rz*Iy
+	local Jy = rz*Ix - rx*Iz
+	local Jz = rx*Iy - ry*Ix
+
+	self._Lx = self._Lx + Jx
+	self._Ly = self._Ly + Jy
+	self._Lz = self._Lz + Jz
+
+	self._px = self._px + Ix
+	self._py = self._py + Iy
+	self._pz = self._pz + Iz
+end
+
+local part = script.Parent
+
+local thing = FreeBody.new()
+thing:setShape(
+	part.Size*Vector3.new(1/2, 0, 0),
+	part.Size*Vector3.new(0, 1/2, 0),
+	part.Size*Vector3.new(0, 0, 1/2),
+	1
+)
+--thing:setAngularVelocity(Vector3.new(0, 0.04, 6.28318))
+--thing:setVelocity(Vector3.new(0, 1, 0))
+thing:setPosition(Vector3.new(-10, 2, 5))
+thing:setGravity(Vector3.new(0, -10, 0))
+
+
+local t = 0
+local lastt = tick()
+local step = 1/6000
+game:GetService("RunService").Heartbeat:Connect(function(_, dt)
+	local nextt = tick()
+	debug.profilebegin("steps")
+	do
+		--debug.profilebegin("step")
+		lastt = lastt + step
+		do
+			local g = Vector3.new(0, 10, 0)
+			local i = thing:getCFrame()*(part.Size/2)
+			local d = g - i
+			thing:impulse(i, 10*step*thing:getMass()*d)
+		end
+		do
+			local i = thing:getCFrame().p
+			thing:impulse(i, -0.5*step*thing:getMass()*thing:getVelocity())
+		end
+		
+		thing:step(step)
+		--debug.profileend()
+	end
+	debug.profileend()
+	--print(thing:getAngularVelocity():Dot(thing:getAngularMomentum()))
+	--print(thing:getVelocity())
+	part.CFrame = thing:getCFrame()
+end)]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b500003189</UniqueId>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Part" referent="RBX94A83CB758C7430A8ECF8E920AC777D3">
+			<Properties>
+				<bool name="Anchored">true</bool>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<CoordinateFrame name="CFrame">
+					<X>-45</X>
+					<Y>2.99999905</Y>
+					<Z>-5</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<bool name="CanQuery">true</bool>
+				<bool name="CanTouch">true</bool>
+				<bool name="CastShadow">true</bool>
+				<string name="CollisionGroup">Default</string>
+				<int name="CollisionGroupId">0</int>
+				<Color3uint8 name="Color3uint8">4292511041</Color3uint8>
+				<PhysicalProperties name="CustomPhysicalProperties">
+					<CustomPhysics>false</CustomPhysics>
+				</PhysicalProperties>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<bool name="Massless">false</bool>
+				<token name="Material">256</token>
+				<string name="MaterialVariantSerialized"></string>
+				<string name="Name">Part</string>
+				<CoordinateFrame name="PivotOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<int name="RootPriority">0</int>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b50000318a</UniqueId>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>4</X>
+					<Y>1</Y>
+					<Z>2</Z>
+				</Vector3>
+			</Properties>
+			<Item class="Script" referent="RBX4A02FAAAF3AC4F4B910311128FADB0D3">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<bool name="Disabled">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">10th</string>
+					<token name="RunContext">0</token>
+					<string name="ScriptGuid">{78BADA16-1137-4623-A777-35E2D4E6370E}</string>
+					<ProtectedString name="Source"><![CDATA[--[[
+	body = FreeBody.new()
+
+	body:step(dt)
+		steps the body forward by dt time
+
+	body:impulse(i, I)
+		applies an impulse at the world point i with impulse I
+
+	body:impulseRelative(i, I)
+		applies an impulse at the relative point i with relative impulse I
+
+	body:setShape(u, v, w, density)
+		sets the shape to the parallelopiped defined with spanning vectors, u, v and w with density d
+		a u + b v + c w
+		-1 < (a, b, c) < 1
+
+	body:setCenterOfMass(c)
+		sets the center of mass offset
+
+	body:setPosition(P)
+
+	body:setVelocity(v)
+
+	body:setGravity(g)
+
+	body:setMomentum(p)
+
+	body:setAngularVelocity(w)
+
+	body:setAngularMomentum(L)
+
+	body:setCFrame(cframe)
+
+	c = body:getCenterOfMass()
+		gets the center of mass offset
+
+	P = body:getPosition()
+
+	v = body:getVelocity()
+
+	g = body:getGravity()
+
+	p = body:getMomentum()
+
+	L = body:getAngularMomentum()
+
+	w = body:getAngularVelocity()
+
+	cframe = body:getCFrame()
+
+	m = body:getMass()
+		returns the mass
+
+	Ixx, Iyy, Izz, Ixy, Iyz, Izx = body:getMomentOfInertia()
+		returns the moment of inertia's unique components
+--]]
+
+local v3  = Vector3.new
+local cf  = CFrame.new
+local cos = math.cos
+local sin = math.sin
+
+local function mulQuatQuat(
+	Aw, Ax, Ay, Az,
+	Bw, Bx, By, Bz
+)
+	return
+		Aw*Bw - Ax*Bx - Ay*By - Az*Bz,
+		Ax*Bw + Aw*Bx - Az*By + Ay*Bz,
+		Ay*Bw + Az*Bx + Aw*By - Ax*Bz,
+		Az*Bw - Ay*Bx + Ax*By + Aw*Bz
+end
+
+local function transformVecByQuat(Qw, Qx, Qy, Qz, vx, vy, vz)
+	local Q2 = Qw*Qw + Qx*Qx + Qy*Qy + Qz*Qz
+	if Q2 == 0 then
+		return vx, vy, vz
+	else
+		local Vw = Qx*vx + Qy*vy + Qz*vz
+		local Vx = Qw*vx + Qy*vz - Qz*vy
+		local Vy = Qw*vy + Qz*vx - Qx*vz
+		local Vz = Qw*vz + Qx*vy - Qy*vx
+		return
+			(Qx*Vw + Qw*Vx - Qz*Vy + Qy*Vz)/Q2,
+			(Qy*Vw + Qz*Vx + Qw*Vy - Qx*Vz)/Q2, 
+			(Qz*Vw - Qy*Vx + Qx*Vy + Qw*Vz)/Q2
+	end
+end
+
+local function unitQuat(Qw, Qx, Qy, Qz)
+	local Q = (Qw*Qw + Qx*Qx + Qy*Qy + Qz*Qz)^0.5
+	if Q == 0 then
+		return 1, 0, 0, 0
+	else
+		return Qw/Q, Qx/Q, Qy/Q, Qz/Q
+	end
+end
+
+local function sqrtQuat(Qw, Qx, Qy, Qz)
+	local Q = (Qw*Qw + Qx*Qx + Qy*Qy + Qz*Qz)^0.5
+	return unitQuat(Qw + Q, Qx, Qy, Qz)
+end
+
+local function mulMatVec(
+	Axx, Ayx, Azx,
+	Axy, Ayy, Azy,
+	Axz, Ayz, Azz,
+	bx, by, bz
+)
+	return
+		Axx*bx + Ayx*by + Azx*bz,
+		Axy*bx + Ayy*by + Azy*bz,
+		Axz*bx + Ayz*by + Azz*bz
+end
+
+local function computeRotationDerivatives(
+	Txx, Tyy, Tzz,
+	Txy, Tyz, Tzx,
+	Lx, Ly, Lz,
+	Rw, Rx, Ry, Rz,
+	depth
+)
+	local Q = {{w = Rw; x = Rx; y = Ry; z = Rz;}}
+	local w = {}
+
+	for d = 1, depth do
+		do
+			local lx, ly, lz = 0, 0, 0
+
+			local f = 1
+			for i = 0, d - 1 do
+				local Qi = Q[i + 1]
+				local Qj = Q[d - i]
+				local _, ax, ay, az = mulQuatQuat(Qi.w, -Qi.x, -Qi.y, -Qi.z, mulQuatQuat(0, f*Lx, f*Ly, f*Lz, Qj.w, Qj.x, Qj.y, Qj.z))
+				lx, ly, lz = lx + ax, ly + ay, lz + az
+				f = f*(d - 1 - i)/(i + 1)
+			end
+
+			local wx, wy, wz = mulMatVec(
+				Txx, Txy, Tzx,
+				Txy, Tyy, Tyz,
+				Tzx, Tyz, Tzz,
+				lx, ly, lz
+			)
+
+			w[d] = {x = wx; y = wy; z = wz;}
+		end
+
+		do
+			local lw, lx, ly, lz = 0, 0, 0, 0
+
+			local f = 1
+			for i = 0, d - 1 do
+				local Qi = Q[i + 1]
+				local wj = w[d - i]
+				local aw, ax, ay, az = mulQuatQuat(Qi.w, Qi.x, Qi.y, Qi.z, 0, f*wj.x, f*wj.y, f*wj.z)
+				lw, lx, ly, lz = lw + aw, lx + ax, ly + ay, lz + az
+				f = f*(d - 1 - i)/(i + 1)
+			end
+
+			Q[d + 1] = {w = lw/2; x = lx/2; y = ly/2; z = lz/2;}
+		end
+	end
+
+	return Q
+end
+
+local function localTransform(
+	Txx, Tyy, Tzz,
+	Txy, Tyz, Tzx,
+	Rw, Rx, Ry, Rz,
+	Lx, Ly, Lz
+)
+	local lx, ly, lz = transformVecByQuat(Rw, -Rx, -Ry, -Rz, Lx, Ly, Lz)
+	local wx, wy, wz = mulMatVec(
+		Txx, Txy, Tzx,
+		Txy, Tyy, Tyz,
+		Tzx, Tyz, Tzz,
+		lx, ly, lz
+	)
+	
+	return transformVecByQuat(Rw, Rx, Ry, Rz, wx, wy, wz)
+end
+
+local function invMat(
+	xx, yx, zx,
+	xy, yy, zy,
+	xz, yz, zz
+)
+	local det = zx*(xy*yz - xz*yy) + zy*(xz*yx - xx*yz) + zz*(xx*yy - xy*yx)
+	return
+		(yy*zz - yz*zy)/det, (yz*zx - yx*zz)/det, (yx*zy - yy*zx)/det,
+		(xz*zy - xy*zz)/det, (xx*zz - xz*zx)/det, (xy*zx - xx*zy)/det,
+		(xy*yz - xz*yy)/det, (xz*yx - xx*yz)/det, (xx*yy - xy*yx)/det
+end
+
+--[[
+	provides a simple way to construct an
+	arbitrary moment of inertia matrix
+
+	parallelepiped volume described as:
+		a*x + b*y + c*z
+		-1 < (a, b, c) < 1
+
+	I*w = momentum
+	I^-1*momentum = w
+--]]
+local function parallelepipedMoment(
+	xx, yx, zx,--i
+	xy, yy, zy,--j
+	xz, yz, zz,--k
+	density
+)
+	local ii = xx*xx + yx*yx + zx*zx
+	local jj = xy*xy + yy*yy + zy*zy
+	local kk = xz*xz + yz*yz + zz*zz
+	local ij = xx*xy + yx*yy + zx*zy
+	local jk = xy*xz + yy*yz + zy*zz
+	local ki = xz*xx + yz*yx + zz*zx
+	local det = zx*(xy*yz - xz*yy) + zy*(xz*yx - xx*yz) + zz*(xx*yy - xy*yx)
+	local mass = 8*det*density
+	local c = 1/3*mass
+	return
+		c*(jj + kk), c*(ii + kk), c*(ii + jj),
+		-c*ij, -c*jk, -c*ki,
+		mass
+end
+
+local FreeBody = {}
+FreeBody.__index = FreeBody
+
+do
+	local base = FreeBody
+	--base._Fx, base._Fy, base._Fz = 0, 0, 0--force
+	base._gx, base._gy, base._gz = 0, 0, 0--gravity
+	base._px, base._py, base._pz = 0, 0, 0--momentum
+	base._Px, base._Py, base._Pz = 0, 0, 0--position
+	base._cx, base._cy, base._cz = 0, 0, 0--center of mass
+	
+	base._Rw, base._Rx, base._Ry, base._Rz = 1, 0, 0, 0--rotation
+	
+	--base._Tx, base._Ty, base._Tz = 0, 0, 0--torque
+	base._Lx, base._Ly, base._Lz = 0, 0, 0--angular momentum
+	
+	base._mass = 1
+	
+	base._Ixx, base._Iyy, base._Izz = 1, 1, 1
+	base._Ixy, base._Iyz, base._Izx = 0, 0, 0--moment of inertia
+	
+	base._Txx, base._Tyy, base._Tzz = 1, 1, 1
+	base._Txy, base._Tyz, base._Tzx = 0, 0, 0--inverse moment of inertia
+end
+
+function FreeBody.new()
+	return setmetatable({}, FreeBody)
+end
+
+function FreeBody:setShape(u, v, w, density)
+	local
+	Ixx, Iyy, Izz,
+	Ixy, Iyz, Izx,
+	mass = parallelepipedMoment(
+		u.x, v.x, w.x,
+		u.y, v.y, w.y,
+		u.z, v.z, w.z,
+		density or 1
+	)
+	local
+	Txx, Txy, Tzx,
+	Txy, Tyy, Tyz,
+	Tzx, Tyz, Tzz = invMat(
+		Ixx, Ixy, Izx,
+		Ixy, Iyy, Iyz,
+		Izx, Iyz, Izz
+	)
+	self._Ixx, self._Iyy, self._Izz = Ixx, Iyy, Izz
+	self._Ixy, self._Iyz, self._Izx = Ixy, Iyz, Izx
+	self._Txx, self._Tyy, self._Tzz = Txx, Tyy, Tzz
+	self._Txy, self._Tyz, self._Tzx = Txy, Tyz, Tzx
+	self._mass = mass
+end
+
+function FreeBody:setCenterOfMass(c)
+	self._cx, self._cy, self._cz = c.x, c.y, c.z
+end
+
+function FreeBody:setPosition(P)
+	self._Px, self._Py, self._Pz = P.x, P.y, P.z
+end
+
+function FreeBody:setVelocity(v)
+	self._px, self._py, self._pz = self._mass*v.x, self._mass*v.y, self._mass*v.z
+end
+
+function FreeBody:setGravity(g)
+	self._gx, self._gy, self._gz = g.x, g.y, g.z
+end
+
+function FreeBody:setMomentum(p)
+	self._px, self._py, self._pz = p.x, p.y, p.z
+end
+
+function FreeBody:setAngularVelocity(w)
+	self._Lx, self._Ly, self._Lz = localTransform(
+		self._Ixx, self._Iyy, self._Izz,
+		self._Ixy, self._Iyz, self._Izx,
+		self._Rw, self._Rx, self._Ry, self._Rz,
+		w.x, w.y, w.z
+	)
+end
+
+function FreeBody:setAngularMomentum(L)
+	self._Lx, self._Ly, self._Lz = L.x, L.y, L.z
+end
+
+local function CFtoQ(cf)
+	local a, t = cf:ToAxisAngle()
+	local c = cos(t/2)
+	local s = sin(t/2)
+	return
+		cf.x, cf.y, cf.z,
+		c, s*a.x, s*a.y, s*a.z
+end
+
+function FreeBody:setCFrame(cframe)
+	self._px, self._py, self._pz, self._Rw, self._Rx, self._Ry, self._Rz = CFtoQ(cframe)
+end
+
+function FreeBody:getCenterOfMass()
+	return v3(self._cx, self._cy, self._cz)
+end
+
+function FreeBody:getCenterOfMassWorld()
+	local ox, oy, oz = transformVecByQuat(self._Rw, self._Rx, self._Ry, self._Rz, self._cx, self._cy, self._cz)
+	return v3(self._Px + ox, self._Py + oy, self._Pz + oz)
+end
+
+function FreeBody:getPosition()
+	return v3(self._Px, self._Py, self._Pz)
+end
+
+function FreeBody:getVelocity()
+	return v3(self._px/self._mass, self._py/self._mass, self._pz/self._mass)
+end
+
+function FreeBody:getGravity()
+	return v3(self._gx, self._gy, self._gz)
+end
+
+function FreeBody:getMomentum()
+	return v3(self._px, self._py, self._pz)
+end
+
+function FreeBody:getAngularMomentum()
+	return v3(self._Lx, self._Ly, self._Lz)
+end
+
+function FreeBody:getAngularVelocity()
+	return v3(localTransform(
+		self._Txx, self._Tyy, self._Tzz,
+		self._Txy, self._Tyz, self._Tzx,
+		self._Rw, self._Rx, self._Ry, self._Rz,
+		self._Lx, self._Ly, self._Lz
+		))
+end
+
+function FreeBody:getCFrame()
+	return cf(self._Px, self._Py, self._Pz, self._Rx, self._Ry, self._Rz, self._Rw)
+end
+
+function FreeBody:getOrientation()
+	return cf(0, 0, 0, self._Rx, self._Ry, self._Rz, self._Rw)
+end
+
+function FreeBody:getMass()
+	return self._mass
+end
+
+function FreeBody:getMomentOfInertia()
+	return
+		self._Ixx, self._Iyy, self._Izz,
+		self._Ixy, self._Iyz, self._Izx
+end
+
+function FreeBody:getNextRotation(
+	Rw, Rx, Ry, Rz,
+	dt
+)
+
+	local D = computeRotationDerivatives(
+		self._Txx, self._Tyy, self._Tzz,
+		self._Txy, self._Tyz, self._Tzx,
+		self._Lx, self._Ly, self._Lz,
+		Rw, Rx, Ry, Rz,
+		10
+	)
+
+	local Nw, Nx, Ny, Nz = 0, 0, 0, 0
+	local f = 1
+	for i = 1, #D do
+		local Di = D[i]
+		Nw = Nw + f*Di.w
+		Nx = Nx + f*Di.x
+		Ny = Ny + f*Di.y
+		Nz = Nz + f*Di.z
+		f = f*dt/i
+	end
+
+	return unitQuat(Nw, Nx, Ny, Nz)
+end
+
+function FreeBody:step(dt)
+	local Rw, Rx, Ry, Rz = self._Rw, self._Rx, self._Ry, self._Rz
+	local Nw, Nx, Ny, Nz = self:getNextRotation(Rw, Rx, Ry, Rz, dt)
+	
+	self._Rw, self._Rx, self._Ry, self._Rz = Nw, Nx, Ny, Nz
+	
+	local ax, ay, az = transformVecByQuat(Rw, Rx, Ry, Rz, self._cx, self._cy, self._cz)
+	local bx, by, bz = transformVecByQuat(Nw, Nx, Ny, Nz, self._cx, self._cy, self._cz)
+	
+	self._Px = self._Px + ax - bx + dt/self._mass*self._px + dt*dt/2*self._gx
+	self._Py = self._Py + ay - by + dt/self._mass*self._py + dt*dt/2*self._gy
+	self._Pz = self._Pz + az - bz + dt/self._mass*self._pz + dt*dt/2*self._gz
+	
+	self._px = self._px + dt*self._mass*self._gx
+	self._py = self._py + dt*self._mass*self._gy
+	self._pz = self._pz + dt*self._mass*self._gz
+end
+
+--impulse origin
+--impulse impulse
+function FreeBody:impulse(i, I)
+	local Ix, Iy, Iz = I.x, I.y, I.z
+	
+	local cx, cy, cz = transformVecByQuat(self._Rw, self._Rx, self._Ry, self._Rz, self._cx, self._cy, self._cz)
+	
+	local rx = i.x - (self._Px + cx)
+	local ry = i.y - (self._Py + cy)
+	local rz = i.z - (self._Pz + cz)
+	
+	local Jx = ry*Iz - rz*Iy
+	local Jy = rz*Ix - rx*Iz
+	local Jz = rx*Iy - ry*Ix
+	
+	self._Lx = self._Lx + Jx
+	self._Ly = self._Ly + Jy
+	self._Lz = self._Lz + Jz
+	
+	self._px = self._px + Ix
+	self._py = self._py + Iy
+	self._pz = self._pz + Iz
+end
+
+function FreeBody:impulseRelative(i, I)
+	local rx, ry, rz = transformVecByQuat(self._Rw, self._Rx, self._Ry, self._Rz, i.x, i.y, i.z)
+	local Ix, Iy, Iz = transformVecByQuat(self._Rw, self._Rx, self._Ry, self._Rz, I.x, I.y, I.z)
+	local cx, cy, cz = transformVecByQuat(self._Rw, self._Rx, self._Ry, self._Rz, self._cx, self._cy, self._cz)
+	
+	rx = rx - cx
+	ry = ry - cy
+	rz = rz - cz
+	
+	local Jx = ry*Iz - rz*Iy
+	local Jy = rz*Ix - rx*Iz
+	local Jz = rx*Iy - ry*Ix
+	
+	self._Lx = self._Lx + Jx
+	self._Ly = self._Ly + Jy
+	self._Lz = self._Lz + Jz
+	
+	self._px = self._px + Ix
+	self._py = self._py + Iy
+	self._pz = self._pz + Iz
+end
+
+local part = script.Parent
+
+local thing = FreeBody.new()
+thing:setShape(
+	part.Size*Vector3.new(1/2, 0, 0),
+	part.Size*Vector3.new(0, 1/2, 0),
+	part.Size*Vector3.new(0, 0, 1/2),
+	1
+)
+--thing:setAngularVelocity(Vector3.new(0, 0.04, 6.28318))
+--thing:setVelocity(Vector3.new(0, 1, 0))
+thing:setPosition(Vector3.new(-10, 2, 5))
+thing:setGravity(Vector3.new(0, -10, 0))
+
+
+local t = 0
+local lastt = tick()
+local step = 1/6000
+game:GetService("RunService").Heartbeat:Connect(function(_, dt)
+	local nextt = tick()
+	debug.profilebegin("steps")
+	do
+		--debug.profilebegin("step")
+		lastt = lastt + step
+		do
+			local g = Vector3.new(0, 10, 0)
+			local i = thing:getCFrame()*(part.Size/2)
+			local d = g - i
+			thing:impulse(i, 10*step*thing:getMass()*d)
+		end
+		do
+			local i = thing:getCFrame().p
+			thing:impulse(i, -0.5*step*thing:getMass()*thing:getVelocity())
+		end
+		
+		thing:step(step)
+		--debug.profileend()
+	end
+	debug.profileend()
+	--print(thing:getAngularVelocity():Dot(thing:getAngularMomentum()))
+	--print(thing:getVelocity())
+	part.CFrame = thing:getCFrame()
+end)]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b50000318b</UniqueId>
+				</Properties>
+			</Item>
+		</Item>
+	</Item>
+	<Item class="SoundService" referent="RBX9A25D3453EBA47088AFE519EAB3431AB">
+		<Properties>
+			<token name="AmbientReverb">0</token>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<float name="DistanceFactor">3.32999992</float>
+			<float name="DopplerScale">1</float>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">SoundService</string>
+			<bool name="RespectFilteringEnabled">true</bool>
+			<float name="RolloffScale">1</float>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b5000002f6</UniqueId>
+			<token name="VolumetricAudio">1</token>
+		</Properties>
+	</Item>
+	<Item class="NonReplicatedCSGDictionaryService" referent="RBX483667C099504438BF91E7ACEC14E29E">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">NonReplicatedCSGDictionaryService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b5000002f7</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="CSGDictionaryService" referent="RBX22D1C4B0EBA9411C9E57F96D553A21D0">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">CSGDictionaryService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b5000002f8</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="Chat" referent="RBX9E002A4A1C784928BB69DD539A17A959">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<bool name="BubbleChatEnabled">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<bool name="LoadDefaultChat">true</bool>
+			<string name="Name">Chat</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b5000002fd</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="TimerService" referent="RBXB83F8563C4804DC78616E56111F61723">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">Instance</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b5000002fe</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="Players" referent="RBX7492B397A908493EA21DB9FAD29D23CC">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<bool name="CharacterAutoLoads">true</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<int name="MaxPlayersInternal">12</int>
+			<string name="Name">Players</string>
+			<int name="PreferredPlayersInternal">56832</int>
+			<float name="RespawnTime">5</float>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b500000300</UniqueId>
+			<bool name="UseStrafingAnimations">false</bool>
+		</Properties>
+	</Item>
+	<Item class="ReplicatedFirst" referent="RBX86151AEEA1464C3293560288F7697ABD">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">ReplicatedFirst</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b500000304</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="TweenService" referent="RBXE8A530A015FC43518DB42FBD7815827E">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">TweenService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b500000306</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="MaterialService" referent="RBX2D5317B8435443DAA3CA6D074235B9D7">
+		<Properties>
+			<string name="AsphaltName">Asphalt</string>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<string name="BasaltName">Basalt</string>
+			<string name="BrickName">Brick</string>
+			<string name="CobblestoneName">Cobblestone</string>
+			<string name="ConcreteName">Concrete</string>
+			<string name="CorrodedMetalName">CorrodedMetal</string>
+			<string name="CrackedLavaName">CrackedLava</string>
+			<string name="DiamondPlateName">DiamondPlate</string>
+			<string name="FabricName">Fabric</string>
+			<string name="FoilName">Foil</string>
+			<string name="GlacierName">Glacier</string>
+			<string name="GraniteName">Granite</string>
+			<string name="GrassName">Grass</string>
+			<string name="GroundName">Ground</string>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="IceName">Ice</string>
+			<string name="LeafyGrassName">LeafyGrass</string>
+			<string name="LimestoneName">Limestone</string>
+			<string name="MarbleName">Marble</string>
+			<string name="MetalName">Metal</string>
+			<string name="MudName">Mud</string>
+			<string name="Name">MaterialService</string>
+			<string name="PavementName">Pavement</string>
+			<string name="PebbleName">Pebble</string>
+			<string name="PlasticName">Plastic</string>
+			<string name="RockName">Rock</string>
+			<string name="SaltName">Salt</string>
+			<string name="SandName">Sand</string>
+			<string name="SandstoneName">Sandstone</string>
+			<string name="SlateName">Slate</string>
+			<string name="SmoothPlasticName">SmoothPlastic</string>
+			<string name="SnowName">Snow</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b500000307</UniqueId>
+			<bool name="Use2022MaterialsXml">false</bool>
+			<string name="WoodName">Wood</string>
+			<string name="WoodPlanksName">WoodPlanks</string>
+		</Properties>
+	</Item>
+	<Item class="PermissionsService" referent="RBX486E12B03D124A2E88BEE8C79F2910EA">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">PermissionsService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b50000030b</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="PlayerEmulatorService" referent="RBX4C7B74D47519445F90784BEDFB5A837F">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<bool name="CustomPoliciesEnabled">false</bool>
+			<string name="EmulatedCountryCode"></string>
+			<string name="EmulatedGameLocale"></string>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">PlayerEmulatorService</string>
+			<bool name="PlayerEmulationEnabled">false</bool>
+			<BinaryString name="SerializedEmulatedPolicyInfo"></BinaryString>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b50000030d</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="StudioData" referent="RBXB995EB30C83444EB839FC83D430D1336">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<bool name="EnableScriptCollabByDefaultOnLoad">true</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">StudioData</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b500000310</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="StarterPlayer" referent="RBXFB45F961AF404D0FB468CDD436E7DA2A">
+		<Properties>
+			<bool name="AllowCustomAnimations">true</bool>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<bool name="AutoJumpEnabled">true</bool>
+			<float name="CameraMaxZoomDistance">128</float>
+			<float name="CameraMinZoomDistance">0.5</float>
+			<token name="CameraMode">0</token>
+			<float name="CharacterJumpHeight">7.19999981</float>
+			<float name="CharacterJumpPower">50</float>
+			<float name="CharacterMaxSlopeAngle">89</float>
+			<bool name="CharacterUseJumpPower">true</bool>
+			<float name="CharacterWalkSpeed">16</float>
+			<token name="DevCameraOcclusionMode">0</token>
+			<token name="DevComputerCameraMovementMode">0</token>
+			<token name="DevComputerMovementMode">0</token>
+			<token name="DevTouchCameraMovementMode">0</token>
+			<token name="DevTouchMovementMode">0</token>
+			<token name="EnableDynamicHeads">0</token>
+			<bool name="EnableMouseLockOption">true</bool>
+			<int64 name="GameSettingsAssetIDFace">0</int64>
+			<int64 name="GameSettingsAssetIDHead">0</int64>
+			<int64 name="GameSettingsAssetIDLeftArm">0</int64>
+			<int64 name="GameSettingsAssetIDLeftLeg">0</int64>
+			<int64 name="GameSettingsAssetIDPants">0</int64>
+			<int64 name="GameSettingsAssetIDRightArm">0</int64>
+			<int64 name="GameSettingsAssetIDRightLeg">0</int64>
+			<int64 name="GameSettingsAssetIDShirt">0</int64>
+			<int64 name="GameSettingsAssetIDTeeShirt">0</int64>
+			<int64 name="GameSettingsAssetIDTorso">0</int64>
+			<token name="GameSettingsAvatar">1</token>
+			<token name="GameSettingsR15Collision">0</token>
+			<NumberRange name="GameSettingsScaleRangeBodyType">0 1 </NumberRange>
+			<NumberRange name="GameSettingsScaleRangeHead">0.95 1 </NumberRange>
+			<NumberRange name="GameSettingsScaleRangeHeight">0.9 1.05 </NumberRange>
+			<NumberRange name="GameSettingsScaleRangeProportion">0 1 </NumberRange>
+			<NumberRange name="GameSettingsScaleRangeWidth">0.7 1 </NumberRange>
+			<float name="HealthDisplayDistance">100</float>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<token name="HumanoidStateMachineMode">0</token>
+			<bool name="LoadCharacterAppearance">true</bool>
+			<token name="LoadCharacterLayeredClothing">0</token>
+			<string name="Name">StarterPlayer</string>
+			<float name="NameDisplayDistance">100</float>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b500000312</UniqueId>
+			<bool name="UserEmotesEnabled">true</bool>
+		</Properties>
+		<Item class="StarterPlayerScripts" referent="RBXA07D2019C1624F308D1161A0E7B17A5C">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<string name="Name">StarterPlayerScripts</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b50000318c</UniqueId>
+			</Properties>
+		</Item>
+		<Item class="StarterCharacterScripts" referent="RBX176C1C71AC2B4180A940E63A9EFD56BE">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<string name="Name">StarterCharacterScripts</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b50000318d</UniqueId>
+			</Properties>
+		</Item>
+	</Item>
+	<Item class="StarterPack" referent="RBX25873A60DD874C6C9989C8EFEDDE3A69">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">StarterPack</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b500000313</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="StarterGui" referent="RBXB92308469E6B4BD4BF25056095172396">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">StarterGui</string>
+			<bool name="ResetPlayerGuiOnSpawn">true</bool>
+			<token name="RtlTextSupport">0</token>
+			<token name="ScreenOrientation">2</token>
+			<bool name="ShowDevelopmentGui">true</bool>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b500000314</UniqueId>
+			<token name="VirtualCursorMode">0</token>
+		</Properties>
+	</Item>
+	<Item class="LocalizationService" referent="RBXBB94037D91F24BA3A2656A36FCA637BB">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">LocalizationService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b500000318</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="TeleportService" referent="RBXBEFC63F32E594EF99295F065443A07C5">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">Teleport Service</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b50000031b</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="CollectionService" referent="RBX51EBA055FA494052ACCC4D7B963ACFB4">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">CollectionService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b50000031d</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="PhysicsService" referent="RBXC73B8619EC4D4C299D0011D44AC950C6">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">PhysicsService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b50000031e</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="Geometry" referent="RBXF62BD972E74040F18E5CBB2809EB1B99">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">Geometry</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b500000320</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="InsertService" referent="RBX94E7B4C5CC7F4B15901C07E2310D7C7A">
+		<Properties>
+			<bool name="AllowClientInsertModels">false</bool>
+			<bool name="AllowInsertFreeModels">false</bool>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">InsertService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b500000322</UniqueId>
+		</Properties>
+		<Item class="StringValue" referent="RBX6E4E82D42A8F416D8B974B90B874B09C">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<string name="Name">InsertionHash</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b500003437</UniqueId>
+				<string name="Value">{A0B6D14A-E19F-4B0A-AB16-CD8CD2259E4D}</string>
+			</Properties>
+		</Item>
+	</Item>
+	<Item class="GamePassService" referent="RBX1C7DBA5D92714043992868E420CD541B">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">GamePassService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b500000323</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="Debris" referent="RBX3AC9EC63292C47A1B953539E9304BFA4">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<int name="MaxItems">1000</int>
+			<string name="Name">Debris</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b500000324</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="CookiesService" referent="RBX4BFA242D2E63413291C7E8272FA525C9">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">CookiesService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b500000325</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="VRService" referent="RBX36009F34164741CAAA7213ED29A1C9B0">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">VRService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b500000329</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="ContextActionService" referent="RBXC85BD5C812A64DC09C273F099ED6B614">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">ContextActionService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b50000032a</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="ScriptService" referent="RBX222F5C60948A4524953673B8BF7FC1AB">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">Instance</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b50000032b</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="AssetService" referent="RBXD5EF51C2061B4FD485797B71B8C54F9B">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">AssetService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b50000032c</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="TouchInputService" referent="RBX465A6277DBB1447BB770C7DBDBE57B54">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">TouchInputService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b50000032d</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="AnalyticsService" referent="RBX9754F85D938D47229D4912078E06FC7D">
+		<Properties>
+			<string name="ApiKey"></string>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">AnalyticsService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b500000330</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="Selection" referent="RBXACEAD1EEE0B7401C88B6390E49976C84">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">Selection</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b500000332</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="ServerScriptService" referent="RBXB336CCF6E536433D895850919FE84DF6">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<bool name="LoadStringEnabled">false</bool>
+			<string name="Name">ServerScriptService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b500000333</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="ServerStorage" referent="RBXF02414C7080C4FD3B341004ECA8B5FAF">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">ServerStorage</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b500000334</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="ReplicatedStorage" referent="RBXAFC0DCB92E9746308AF056190B8B86EA">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">ReplicatedStorage</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b500000335</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="LuaWebService" referent="RBX5ABC93C0ED1A4B0D8CB358BE0143AE8F">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">Instance</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b50000033a</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="ProcessInstancePhysicsService" referent="RBXC06FAB84CEB14BCA8510ECFF01E91AE5">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">ProcessInstancePhysicsService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b50000033c</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="LanguageService" referent="RBXCFEA0D3540DD48E0A0A5240B0CED0BC2">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">LanguageService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b50000034b</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="Lighting" referent="RBXBEDF1A4CDE3241D4A01E59C8CA89E1DA">
+		<Properties>
+			<Color3 name="Ambient">
+				<R>0</R>
+				<G>0</G>
+				<B>0</B>
+			</Color3>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<float name="Brightness">2</float>
+			<Color3 name="ColorShift_Bottom">
+				<R>0</R>
+				<G>0</G>
+				<B>0</B>
+			</Color3>
+			<Color3 name="ColorShift_Top">
+				<R>0</R>
+				<G>0</G>
+				<B>0</B>
+			</Color3>
+			<float name="EnvironmentDiffuseScale">0</float>
+			<float name="EnvironmentSpecularScale">0</float>
+			<float name="ExposureCompensation">0</float>
+			<Color3 name="FogColor">
+				<R>0.752941251</R>
+				<G>0.752941251</G>
+				<B>0.752941251</B>
+			</Color3>
+			<float name="FogEnd">100000</float>
+			<float name="FogStart">0</float>
+			<float name="GeographicLatitude">41.7332993</float>
+			<bool name="GlobalShadows">true</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">Lighting</string>
+			<Color3 name="OutdoorAmbient">
+				<R>0.501960814</R>
+				<G>0.501960814</G>
+				<B>0.501960814</B>
+			</Color3>
+			<bool name="Outlines">false</bool>
+			<float name="ShadowSoftness">0.5</float>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<token name="Technology">1</token>
+			<string name="TimeOfDay">14:00:00</string>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b500000350</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="LodDataService" referent="RBX0F95589BFA2D4296A7678D2A497F8A0C">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">LodDataService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b500000353</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="ServiceVisibilityService" referent="RBX1FAEEBB5AB974271947FE707EB6184F4">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">ServiceVisibilityService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b50000317c</UniqueId>
+			<BinaryString name="VisibleServices">AAAAAA==</BinaryString>
+		</Properties>
+	</Item>
+	<Item class="HttpService" referent="RBX189C4A0A66334E08BBBA234D4FE885F5">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<bool name="HttpEnabled">false</bool>
+			<string name="Name">HttpService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b50000317d</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="TestService" referent="RBX24A7D9BB19E34E2DB692E94686BC1FE7">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<bool name="AutoRuns">true</bool>
+			<string name="Description"></string>
+			<bool name="ExecuteWithStudioRun">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<bool name="Is30FpsThrottleEnabled">true</bool>
+			<bool name="IsPhysicsEnvironmentalThrottled">true</bool>
+			<bool name="IsSleepAllowed">true</bool>
+			<string name="Name">TestService</string>
+			<int name="NumberOfPlayers">0</int>
+			<double name="SimulateSecondsLag">0</double>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<double name="Timeout">10</double>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b50000317e</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="VirtualInputManager" referent="RBXD2DD84147A6E41F3B889CF0FADFE289A">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">VirtualInputManager</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b50000317f</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="Teams" referent="RBXB1BBF6D7F50145C4A1829A84DED551C4">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">Teams</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">1132fdc57dd8e22a048b37b5000031b3</UniqueId>
+		</Properties>
+	</Item>
+	<SharedStrings>
+		<SharedString md5="yuZpQdnvvUBOTYh1jqZ2cA=="></SharedString>
+	</SharedStrings>
+</roblox>

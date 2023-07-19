@@ -1,6 +1,0 @@
-
-local InputObject = {}
-
-
-
-return InputObject
