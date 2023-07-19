@@ -1494,7 +1494,7 @@ createInstanceClass("ScreenGui")
 
 
 do
-	local serializer = require("LuaSerializer")
+	local serializer = require("luaserializer")
 	local serialize = serializer.serialize
 
 	local RemoteEvent = createInstanceClass("RemoteEvent")
@@ -1527,7 +1527,7 @@ do
 end
 
 do
-	local serializer = require("LuaSerializer")
+	local serializer = require("luaserializer")
 
 	local serialize = serializer.serialize
 	local yield = coroutine.yield
@@ -2179,7 +2179,7 @@ do
 		end
 
 
-		local serializer = require("LuaSerializer")
+		local serializer = require("luaserializer")
 		local unserialize = serializer.unserialize
 
 		love.update:Connect(function()
@@ -2237,17 +2237,18 @@ end
 
 
 
---lovlox.loadPlace("Freebody.rbxlx")
-lovlox.loadPlace("Bowmen 2.rbxlx")
+--lovlox.loadPlace("freebody.rbxlx")
+lovlox.loadPlace("bowmen2.rbxlx")
 
 
 
+if runningAs.client then
+	local part = Instance.new("Part", workspace)
 
-
-
-
-
-
+	game:GetService("RunService").RenderStepped:Connect(function()
+		part.CFrame = workspace.CurrentCamera.CFrame*CFrame.new(0, 0, -10)
+	end)
+end
 
 
 

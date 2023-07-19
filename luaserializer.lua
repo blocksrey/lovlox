@@ -88,7 +88,7 @@ local tconcat = table.concat
 local unpack = unpack or table.unpack
 
 -- This is not required for serializing, but it will help you keep your data smaller
-local TLibCompress = TLibCompress or require("LibCompress")
+local TLibCompress = TLibCompress or require("libcompress")
 
 local LuaSerializer_ToMsgVal
 local LuaSerializer_ToRealVal
