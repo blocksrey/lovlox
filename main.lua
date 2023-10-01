@@ -1,30 +1,36 @@
---TODO: Get a working wait command, we need threads to be able to pause individually. it's needed for InvokeServer/InvokeClient
+-- Mada: Get a working wait command, we need threads to be able to pause individually. it's needed for InvokeServer/InvokeClient
 
 
 
 
-local runningAs = {[arg[2] or 0] = true}
-assert(arg[2] == "server" or arg[2] == "client", "invalid run mode")
 
-local connectionsList = {}
+local releaseMode = false
+
+
+assert(arg[2] == 'server' or arg[2] == 'client', 'invalid run mode')
+local runningAs = {[arg[2]] = true}
+
+
+
+
 
 
 
 local vertexAttributeMap = {
 	mesh = {
-		{"vertexP", "float", 3},
-		{"vertexN", "float", 3}
+		{'vertexP', 'float', 3},
+		{'vertexN', 'float', 3}
 	};
 	light = {
-		{"vertexP", "float", 3}
+		{'vertexP', 'float', 3}
 	};
 }
 
 
 
-local geometryShader = love.graphics.newShader("shaders/geometry.glsl")
-local debandShader = love.graphics.newShader("shaders/deband.glsl")
-local skyShader = love.graphics.newShader("shaders/sky.glsl")
+local debandShader = love.graphics.newShader('shaders/deband.glsl')
+local geometryShader = love.graphics.newShader('shaders/geometry.glsl')
+local skyShader = love.graphics.newShader('shaders/sky.glsl')
 
 
 
@@ -32,6 +38,102 @@ local skyShader = love.graphics.newShader("shaders/sky.glsl")
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+local scheduler = {}
+do
+	local remove = table.remove
+	local resume = coroutine.resume
+	local status = coroutine.status
+	local yield = coroutine.yield
+
+	local queue = {}
+	local deathRoutines = {}
+
+	local function queueResumption(thread, ...)
+		queue[#queue + 1] = {thread, ...}
+	end
+
+	local function pop()
+		queue[#queue] = nil
+	end
+
+	local function manualYield(thread)
+		for i = 1, #queue do
+			if queue[i][1] == thread then
+				remove(queue, i)
+				return yield()
+			end
+		end
+		--assert(releaseMode, '[Error] Incorrect call to manual yield')
+	end
+
+	local function run()
+		while #queue > 0 do
+			local current = queue[#queue]
+
+			local thread = current[1]
+
+			local yieldInfo = {resume(thread, unpack(current, 2))}
+			local status = status(thread)
+
+			--print(thread, status, unpack(current, 2))
+			--print(thread, status, unpack(yieldInfo))
+
+			pop()
+
+			if status == 'suspended' then
+				local yieldType = yieldInfo[2]
+				if yieldType == 'die' then
+					local dependencyThread = yieldInfo[3]
+					queueResumption(dependencyThread) -- move the dependency thread to step threads
+					deathRoutines[dependencyThread] = thread -- create the onDie callback to resume the original dependor thread
+				elseif yieldType == 'second' then
+					--assert(releaseMode, '[Debug] Wait was called')
+					queueResumption(thread)
+				elseif yieldType == 'invoke' then
+					--assert(releaseMode, '[Debug] Invoking the scheduler')
+				end
+			elseif status == 'dead' then
+				if deathRoutines[thread] then
+					queueResumption(deathRoutines[thread], unpack(yieldInfo, 2)) -- dependency thread is finished, so now we can resume the dependor thread
+					deathRoutines[thread] = nil
+				end
+			end
+		end
+	end
+
+	scheduler = {
+		queueResumption = queueResumption;
+		pop = pop;
+		manualYield = manualYield;
+		run = run;
+	}
+end
 
 
 
@@ -61,11 +163,11 @@ do
 		end
 	end
 
-	registerEnum("PartType", {"Ball", "Block", "Cylinder", "Tetahedron"})
-	registerEnum("CameraType", {"Scriptable"})
-	registerEnum("MeshType", {"Wedge"})
-	registerEnum("KeyCode", {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "Space", "F8"})
-	registerEnum("MouseBehavior", {"LockCenter", "Default", "LockCurrentPosition"})
+	registerEnum('PartType', {'Ball', 'Block', 'Cylinder', 'Tetahedron'})
+	registerEnum('CameraType', {'Scriptable'})
+	registerEnum('MeshType', {'Wedge'})
+	registerEnum('KeyCode', {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Space', 'F8'})
+	registerEnum('MouseBehavior', {'LockCenter', 'Default', 'LockCurrentPosition'})
 end
 
 
@@ -88,10 +190,10 @@ do
 		local self = {}
 
 		function self:Draw()
-			geometryShader:send("objectP", {position:GetComponents()})
-			geometryShader:send("objectO", {orientation:GetComponents()})
-			geometryShader:send("objectS", {size:GetComponents()})
-			geometryShader:send("objectC", {color.r, color.g, color.b, 1})
+			geometryShader:send('objectP', {position:GetComponents()})
+			geometryShader:send('objectO', {orientation:GetComponents()})
+			geometryShader:send('objectS', {size:GetComponents()})
+			geometryShader:send('objectC', {color.r, color.g, color.b, 1})
 			love.graphics.draw(mesh)
 		end
 
@@ -123,11 +225,11 @@ do
 
 		if not cachedSphereGeometry[n] then
 			-- outer radius of 1:
-			local u = 0.52573111--sqrt(0.1*(5 - sqrt(5)))
-			local v = 0.85065081--sqrt(0.1*(5 + sqrt(5)))
+			local u = 0.52573111 -- sqrt(0.1*(5 - sqrt(5)))
+			local v = 0.85065081 -- sqrt(0.1*(5 + sqrt(5)))
 			-- inner radius of 1:
-			-- local u = sqrt(1.5*(7 - 3*sqrt(5)))
-			-- local v = sqrt(1.5*(3 - sqrt(5)))
+			--local u = sqrt(1.5*(7 - 3*sqrt(5)))
+			--local v = sqrt(1.5*(3 - sqrt(5)))
 			local a = Vector3.new(0, u, v)
 			local b = Vector3.new(0, u, -v)
 			local c = Vector3.new(0, -u, v)
@@ -202,7 +304,7 @@ do
 				end
 			end
 
-			cachedSphereGeometry[n] = love.graphics.newMesh(vertexAttributeMap.mesh, vertices, "triangles", "dynamic")
+			cachedSphereGeometry[n] = love.graphics.newMesh(vertexAttributeMap.mesh, vertices, 'triangles', 'dynamic')
 		end
 
 		return new(cachedSphereGeometry[n])
@@ -247,7 +349,7 @@ do
 	end
 
 	function Mesh.WedgePart()
-		return new(love.graphics.newMesh(vertexAttributeMap.mesh, getWedgePartVertices(), "triangles", "dynamic"))
+		return new(love.graphics.newMesh(vertexAttributeMap.mesh, getWedgePartVertices(), 'triangles', 'dynamic'))
 	end
 
 	local function getBlockVertices()
@@ -303,7 +405,7 @@ do
 	end
 
 	Mesh[Enum.PartType.Block] = function()
-		return new(love.graphics.newMesh(vertexAttributeMap.mesh, getBlockVertices(), "triangles", "dynamic"))
+		return new(love.graphics.newMesh(vertexAttributeMap.mesh, getBlockVertices(), 'triangles', 'dynamic'))
 	end
 
 
@@ -336,7 +438,7 @@ do
 	end
 
 	Mesh[Enum.PartType.Tetahedron] = function()
-		return new(love.graphics.newMesh(vertexAttributeMap.mesh, getTetahedronVertices(), "triangles", "dynamic"))
+		return new(love.graphics.newMesh(vertexAttributeMap.mesh, getTetahedronVertices(), 'triangles', 'dynamic'))
 	end
 end
 
@@ -404,12 +506,12 @@ local function robloxBasePartToMesh(BodyPart)
 		local sx, sy, sz = s:GetComponents()
 		local cr, cg, cb = c:GetComponents()
 
-		if BodyPart.ClassName == "WedgePart" then
+		if BodyPart.ClassName == 'WedgePart' then
 			position = BodyPart.CFrame.Position
 			orientation = Quaternion.fromCFrame(BodyPart.CFrame)
 			size = Vector3.new(sx, sy, sz)
 			color = Color3.new(cr, cg, cb)
-			shape = "WedgePart"
+			shape = 'WedgePart'
 		else
 			position = BodyPart.CFrame.Position
 			orientation = Quaternion.fromCFrame(BodyPart.CFrame)
@@ -426,13 +528,13 @@ local function robloxBasePartToMesh(BodyPart)
 	end
 
 	local mesh = object[shape]()
-	--mesh.setcol(color.x, color.y, color.z)
-	--mesh.setpos(position)
-	--mesh.setrot(orientation)
-	--mesh.setscale(size)
+	-- mesh.setColor(color.x, color.y, color.z)
+	-- mesh.setPosition(position)
+	-- mesh.setRotation(orientation)
+	-- mesh.setScale(size)
 	return mesh
 end
---]]
+]]
 
 
 
@@ -479,12 +581,14 @@ end
 
 
 do
+	local setmt = setmetatable
+
 	RBXScriptConnection = {}
 
 	RBXScriptConnection.__index = RBXScriptConnection
 
 	function RBXScriptConnection.new(signal)
-		return setmetatable({_signal = signal;}, RBXScriptConnection)
+		return setmt({_signal = signal;}, RBXScriptConnection)
 	end
 
 	function RBXScriptConnection:Disconnect()
@@ -493,6 +597,7 @@ do
 end
 
 do
+	local setmt = setmetatable
 	local insert = table.insert
 	local resume = coroutine.resume
 	local yield = coroutine.yield
@@ -502,13 +607,12 @@ do
 	RBXScriptSignal.__index = RBXScriptSignal
 
 	function RBXScriptSignal.new()
-		return setmetatable({_threads = {}; _callbacks = {};}, RBXScriptSignal)
+		return setmt({_threads = {}; _callbacks = {};}, RBXScriptSignal)
 	end
 
 	function RBXScriptSignal:__call(...)
 		for i = #self._threads, 1, -1 do
-			scheduleResume(self._threads[i], ...)
-			--resume(self._threads[i], ...)
+			scheduler.queueResumption(self._threads[i], ...)
 			self._threads[i] = nil
 		end
 		for _, callback in next, self._callbacks do
@@ -517,14 +621,23 @@ do
 	end
 
 	function RBXScriptSignal:Wait()
-		insert(self._threads, running())
-		return yield()
-	end--TODO
+		local thread = running()
+		insert(self._threads, thread)
+		return scheduler.manualYield(thread)
+	end
 
 	function RBXScriptSignal:Connect(callback)
 		local connection = RBXScriptConnection.new(self)
 		self._callbacks[connection] = callback
 		return connection
+	end
+
+	function RBXScriptSignal:Once(callback)
+		local connection = RBXScriptConnection.new(self)
+		self._callbacks[connection] = function(...)
+			connection:Disconnect()
+			callback(...)
+		end
 	end
 end
 
@@ -538,12 +651,13 @@ end
 
 
 do
-	local sqrt = math.sqrt
-	local cos = math.cos
-	local sin = math.sin
+	local setmt = setmetatable
 	local acos = math.acos
+	local cos = math.cos
 	local log = math.log
 	local random = math.random
+	local sin = math.sin
+	local sqrt = math.sqrt
 
 	local hyp = 1.41421356
 	local tau = 6.28318530
@@ -552,7 +666,7 @@ do
 
 	Quaternion.__index = Quaternion
 
-	Quaternion.TypeName = "Quaternion"
+	Quaternion.TypeName = 'Quaternion'
 
 	Quaternion.x = 0
 	Quaternion.y = 0
@@ -560,7 +674,7 @@ do
 	Quaternion.w = 1
 
 	function Quaternion.new(x, y, z, w)
-		return setmetatable({x = x; y = y; z = z; w = w;}, Quaternion)
+		return setmt({x = x; y = y; z = z; w = w;}, Quaternion)
 	end
 
 	local new = Quaternion.new
@@ -606,7 +720,7 @@ do
 	end
 
 	function Quaternion:__tostring()
-		return self.x..", "..self.y..", "..self.z..", "..self.w
+		return self.x..', '..self.y..', '..self.z..', '..self.w
 	end
 
 	function Quaternion:ToAxisAngle()
@@ -697,17 +811,19 @@ do
 end
 
 do
+	local setmt = setmetatable
+
 	Vector2 = {}
 
 	Vector2.__index = Vector2
 
-	Vector2.TypeName = "Vector2"
+	Vector2.TypeName = 'Vector2'
 
 	Vector2.x = 0
 	Vector2.y = 0
 
 	function Vector2.new(x, y)
-		return setmetatable({x = x; y = y;}, Vector2)
+		return setmt({x = x; y = y;}, Vector2)
 	end
 end
 
@@ -720,12 +836,13 @@ end
 
 do
 	local sqrt = math.sqrt
+	local setmt = setmetatable
 
 	Vector3 = {}
 
 	Vector3.__index = Vector3
 
-	Vector3.TypeName = "Vector3"
+	Vector3.TypeName = 'Vector3'
 
 	function Vector3:GetComponents()
 		return self.x, self.y, self.z
@@ -738,14 +855,14 @@ do
 
 		local Magnitude = sqrt(x*x + y*y + z*z)
 
-		return setmetatable({
+		return setmt({
 			x = x;
 			y = y;
 			z = z;
 
 			Magnitude = Magnitude;
 
-			Unit = setmetatable({
+			Unit = setmt({
 				x = x/Magnitude;
 				y = y/Magnitude;
 				z = z/Magnitude;
@@ -763,33 +880,33 @@ do
 		return new(a.x - b.x, a.y - b.y, a.z - b.z)
 	end
 
-	local muls = {}
+	local multiplicationByType = {}
 
-	accessOrTable(muls, "number", "Vector3", function(a, b)
+	accessOrTable(multiplicationByType, 'number', 'Vector3', function(a, b)
 		return a*b.x, a*b.y, a*b.z
 	end)
 
-	accessOrTable(muls, "Vector3", "Vector3", function(a, b)
+	accessOrTable(multiplicationByType, 'Vector3', 'Vector3', function(a, b)
 		return a.x*b.x, a.y*b.y, a.z*b.z
 	end)
 
-	accessOrTable(muls, "Vector3", "Quaternion", function(a, b)
+	accessOrTable(multiplicationByType, 'Vector3', 'Quaternion', function(a, b)
 		local i, j, k = a:GetComponents()
 		local x, y, z, w = b:GetComponentsDiagonal()
 		return i*(1 - y*y - z*z) + j*(x*y - w*z) + k*(x*z + w*y), i*(x*y + w*z) + j*(1 - x*x - z*z) + k*(y*z - w*x), i*(x*z - w*y) + j*(y*z + w*x) + k*(1 - x*x - y*y)
 	end)
 
 	function Vector3.__mul(a, b)
-		return new(muls[typeof(a)][typeof(b)](a, b))
+		return new(multiplicationByType[typeof(a)][typeof(b)](a, b))
 	end
 
 	local divs = {}
 
-	accessOrTable(divs, "Vector3", "Vector3", function(a, b)
+	accessOrTable(divs, 'Vector3', 'Vector3', function(a, b)
 		return a.x/b.x, a.y/b.y, a.z/b.z
 	end)
 
-	accessOrTable(divs, "Vector3", "number", function(a, b)
+	accessOrTable(divs, 'Vector3', 'number', function(a, b)
 		return a.x/b, a.y/b, a.z/b
 	end)
 
@@ -810,23 +927,25 @@ do
 	end
 
 	function Vector3:__tostring()
-		return self.x..", "..self.y..", "..self.z
+		return self.x..', '..self.y..', '..self.z
 	end
 end
 
 do
+	local setmt = setmetatable
+
 	Ray = {}
 
 	Ray.__index = Ray
 
-	Ray.TypeName = "Ray"
+	Ray.TypeName = 'Ray'
 
 	function Ray.new(Origin, Direction)
-		return setmetatable({Origin = Origin or Vector3.new(); Direction = Direction or Vector3.new();}, Ray)
+		return setmt({Origin = Origin or Vector3.new(); Direction = Direction or Vector3.new();}, Ray)
 	end
 
 	function Ray:__tostring()
-		return "{"..tostring(self.Origin).."}, {"..tostring(self.Direction).."}"
+		return '{'..tostring(self.Origin)..'}, {'..tostring(self.Direction)..'}'
 	end
 
 	function Ray:ClosestPoint(point)
@@ -846,10 +965,11 @@ do
 end
 
 do
-	local bit = require("bit")
+	local bit = require('bit')
 
 	local band = bit.band
 	local rshift = bit.rshift
+	local setmt = setmetatable
 
 	Color3 = {}
 
@@ -860,7 +980,7 @@ do
 	Color3.b = 0
 
 	function Color3.new(r, g, b)
-		return setmetatable({r = r; g = g; b = b;}, Color3)
+		return setmt({r = r; g = g; b = b;}, Color3)
 	end
 
 	local new = Color3.new
@@ -888,10 +1008,11 @@ do
 	local asin = math.asin
 	local atan2 = math.atan2
 	local sqrt = math.sqrt
+	local setmt = setmetatable
 
 	CFrame = {}
 
-	CFrame.TypeName = "CFrame"
+	CFrame.TypeName = 'CFrame'
 
 	CFrame.x = 0
 	CFrame.y = 0
@@ -906,13 +1027,13 @@ do
 	CFrame.zy = 0
 	CFrame.zz = 1
 
-	local constructors = {}
+	local constructorsBySize = {}
 
-	constructors[0] = function()
+	constructorsBySize[0] = function()
 		return {}
 	end
 
-	constructors[1] = function(v)
+	constructorsBySize[1] = function(v)
 		return {
 			x = v.x;
 			y = v.y;
@@ -920,7 +1041,7 @@ do
 		}
 	end
 
-	constructors[2] = function(v0, v1)
+	constructorsBySize[2] = function(v0, v1)
 		local u = (v0 - v1).Unit
 		local x, y, z = u:GetComponents()
 		local s = 1/sqrt(1 - uy*uy)
@@ -940,7 +1061,7 @@ do
 		}
 	end
 
-	constructors[3] = function(x, y, z)
+	constructorsBySize[3] = function(x, y, z)
 		return {
 			x = x;
 			y = y;
@@ -948,8 +1069,8 @@ do
 		}
 	end
 
-	constructors[7] = function(x, y, z, qx, qy, qz, qw)
-		qx, qy, qz, qw = 0.5*qx, 0.5*qy, 0.5*qz, 0.5*qw
+	constructorsBySize[7] = function(x, y, z, qx, qy, qz, qw)
+		qx, qy, qz, qw = 0.5*qx, 0.5*qy, 0.5*qz, 0.5*qw -- more like half q
 
 		return {
 			x = x;
@@ -967,7 +1088,7 @@ do
 		}
 	end
 
-	constructors[12] = function(x, y, z, xx, yx, zx, xy, yy, zy, xz, yz, zz)
+	constructorsBySize[12] = function(x, y, z, xx, yx, zx, xy, yy, zy, xz, yz, zz)
 		return {
 			x = x;
 			y = y;
@@ -985,23 +1106,23 @@ do
 	end
 
 	function CFrame.new(...)
-		return setmetatable(constructors[select("#", ...)](...), CFrame)
+		return setmt(constructorsBySize[select('#', ...)](...), CFrame)
 	end
 
 	local new = CFrame.new
 
-	local indexs = {}
+	local valueByIndex = {}
 
-	function indexs.Position(self)
+	function valueByIndex.Position(self)
 		return Vector3.new(self.x, self.y, self.z)
 	end
 
-	function indexs.p(self)
+	function valueByIndex.p(self)
 		return Vector3.new(self.x, self.y, self.z)
 	end
 
 	function CFrame:__index(i)
-		return indexs[i] and indexs[i](self) or rawget(self, i) or CFrame[i]
+		return valueByIndex[i] and valueByIndex[i](self) or rawget(self, i) or CFrame[i]
 	end
 
 	function CFrame:ToAxisAngle()
@@ -1018,7 +1139,7 @@ do
 	end
 
 	function CFrame:__tostring()
-		return self.x..", "..self.y..", "..self.z..", "..self.xx..", "..self.yx..", "..self.zx..", "..self.xy..", "..self.yy..", "..self.zy..", "..self.xz..", "..self.yz..", "..self.zz
+		return self.x..', '..self.y..', '..self.z..', '..self.xx..', '..self.yx..', '..self.zx..', '..self.xy..', '..self.yy..', '..self.zy..', '..self.xz..', '..self.yz..', '..self.zz
 	end
 
 	function CFrame.__add(a, b)
@@ -1029,9 +1150,9 @@ do
 		return new(a.x - b.x, a.y - b.y, a.z - b.z, a.xx, a.yx, a.zx, a.xy, a.yy, a.zy, a.xz, a.yz, a.zz)
 	end
 
-	local muls = {}
+	local multiplicationByType = {}
 
-	accessOrTable(muls, "CFrame", "CFrame", function(a, b)
+	accessOrTable(multiplicationByType, 'CFrame', 'CFrame', function(a, b)
 		local ax, ay, az, axx, ayx, azx, axy, ayy, azy, axz, ayz, azz = a:GetComponents()
 		local bx, by, bz, bxx, byx, bzx, bxy, byy, bzy, bxz, byz, bzz = b:GetComponents()
 		return new(
@@ -1042,12 +1163,12 @@ do
 		)
 	end)
 
-	accessOrTable(muls, "CFrame", "Vector3", function(a, b)
+	accessOrTable(multiplicationByType, 'CFrame', 'Vector3', function(a, b)
 		return Vector3.new(a.x + b.x*a.xx + b.y*a.yx + b.z*a.zx, a.y + b.x*a.xy + b.y*a.yy + b.z*a.zy, a.z + b.x*a.xz + b.y*a.yz + b.z*a.zz)
 	end)
 
 	function CFrame.__mul(a, b)
-		return muls[typeof(a)][typeof(b)](a, b)
+		return multiplicationByType[typeof(a)][typeof(b)](a, b)
 	end
 
 	function CFrame:GetComponents()
@@ -1151,86 +1272,19 @@ end
 
 
 
-local network = {}
-local runners = {}
-
-function network.receive(key)
-	if not runners[key] then
-		runners[key] = RBXScriptSignal.new()
-	end
-	return runners[key]
-end
 
 
 
 
 
-local onDieCallback = {}
-local stepThreads = {}
-local dumpShit = {}
-
-do
-	local resume = coroutine.resume
-	local status = coroutine.status
-
-	function runScheduler()
-		local continue = true
-
-		while continue do
-			continue = false
-
-			for thread in next, stepThreads do
-				continue = true
-				--print(thread)
-				if not dumpShit[thread] then
-					dumpShit[thread] = {}
-				end
-
-				local info = {resume(thread, unpack(dumpShit[thread]))}
-
-				dumpShit[thread] = {}
-
-				local status = status(thread)
-
-				print(thread, status, unpack(info, 2, #info))
-
-				if status ~= "dead" then
-					if info[2] == "waitdie" then
-						stepThreads[thread] = nil--remove the dependor thread from step threads
-						stepThreads[info[3]] = true--move the dependency thread to step threads
-						onDieCallback[info[3]] = thread--create the onDie callback to resume the original dependor thread
-					elseif info[2] == "waitsecond" then
-						stepThreads[thread] = nil
-					elseif info[2] == "OnServerInvoke" then
-						stepThreads[thread] = nil
-					elseif info[2] == "OnClientInvoke" then
-						stepThreads[thread] = nil
-					end
-				else
-					if onDieCallback[thread] then
-						dumpShit[onDieCallback[thread]] = {unpack(info, 2, #info)}
-						stepThreads[onDieCallback[thread]] = true
-					end--dependency thread is finished, so now we can resume the dependor thread
-					onDieCallback[thread] = nil
-					stepThreads[thread] = nil
-				end
-			end
-
-		end
-	end
-
-end
-
----[[
 do
 	local yield = coroutine.yield
 
 	function wait(s)
-		yield("waitsecond", s)
+		yield('second', s)
 		return true
 	end
 end
---]]
 
 
 
@@ -1268,9 +1322,14 @@ end
 
 
 
+local instanceAttributes = {}
+
+local instance_from_referent_id = {}
 
 
-local nilParent = {_children = {}; ChildAdded = RBXScriptSignal.new();}
+
+local nilInstance = {_children = {}}
+instance_from_referent_id['null'] = nilInstance
 
 local function combine(content)
 	local combined = {}
@@ -1282,13 +1341,12 @@ local function combine(content)
 	return combined
 end
 
-local instanceAttributes = {}
-
 local classes = {}
 
-local insert = table.insert
+local function create_instance_class(class_name, inherits)
+	local insert = table.insert
+	local setmt = setmetatable
 
-local function createInstanceClass(className, inherits)
 	local class = {}
 
 	if inherits then
@@ -1297,16 +1355,16 @@ local function createInstanceClass(className, inherits)
 		end
 	end
 
-	classes[className] = class
+	classes[class_name] = class
 
-	class.Name = className
-	class.ClassName = className
+	class.Name = class_name
+	class.ClassName = class_name
 
-	class.Parent = nilParent
+	class.Parent = nilInstance
 
 	function class:Clone()
 		return self
-	end--TODO
+	end -- Mada
 
 	function class:__tostring()
 		return self.Name
@@ -1320,13 +1378,53 @@ local function createInstanceClass(className, inherits)
 		end
 	end
 
-	function class:WaitForChild(name)--TODO
-		print(self, name)
-		return self:FindFirstChild(name)
+	-- Store references to the 'coroutine.running' and 'coroutine.yield' functions for convenience.
+	local running = coroutine.running
+	local yield = coroutine.yield
+
+	-- Define the 'WaitForChild' function within the class.
+	function class:WaitForChild(name)
+		-- Attempt to find a child with the given 'name' within the instance.
+		local child = self:FindFirstChild(name)
+
+		-- If the child is not found, execute the following block.
+		if not child then
+			-- Print a message indicating that the code is waiting for the specified child.
+			print('Gotta wait for child', name)
+
+			-- Get the current coroutine thread.
+			local thread = running()
+
+			-- Declare a local variable 'connection', which will hold a connection to the 'ChildAdded' event.
+			local connection
+
+			-- Connect a callback function to the 'ChildAdded' event of the instance.
+			-- The callback will be executed every time a new child is added to the instance.
+			connection = self.ChildAdded:Connect(function(child)
+				-- Check if the added child has the desired 'name'.
+				if child.Name == name then
+					-- If the child with the desired 'name' is found, disconnect the event connection.
+					connection:Disconnect()
+
+					-- Print a message indicating that the desired child has been found, along with the coroutine thread.
+					print('THE CHILD HAS COME', thread)
+
+					-- Queue a resumption of the specified coroutine thread along with the found child as a parameter.
+					scheduler.queueResumption(thread, child)
+				end
+			end)
+
+			-- Manually yield the coroutine thread to the scheduler.
+			-- The coroutine will be paused until it is explicitly resumed by the scheduler.
+			return scheduler.manualYield(thread)
+		end
+
+		-- If the child is found, return the reference to the child.
+		return child
 	end
 
 	function class.new()
-		local self = setmetatable({}, class)
+		local self = setmt({}, class)
 
 		instanceAttributes[self] = {}
 
@@ -1344,7 +1442,7 @@ local function createInstanceClass(className, inherits)
 
 	function class:__newindex(i, v)
 		instanceAttributes[self][i] = v
-		if i == "Parent" then
+		if i == 'Parent' then
 			self.Parent._children[self] = nil
 			v._children[self] = true
 			v.ChildAdded(self)
@@ -1360,48 +1458,80 @@ local function createInstanceClass(className, inherits)
 		return children
 	end
 
+	-- Get all descendants of the class.
 	function class:GetDescendants()
+		-- Create an empty table to store the descendants.
 		local descendants = {}
+
+		-- Create a stack and initialize it with the current class as the starting point.
 		local stack = {self}
 		local stackSize = 1
+
+		-- Initialize the length of the descendants table.
 		local descendantsLength = 0
 
+		-- While there are elements in the stack, traverse the class hierarchy.
 		while stackSize > 0 do
+			-- Get the last object from the stack.
 			local obj = stack[stackSize]
 			stackSize = stackSize - 1
 
+			-- Iterate through all the children of the current object.
 			for child in next, obj._children do
+				-- Add the child to the descendants table.
 				descendantsLength = descendantsLength + 1
 				descendants[descendantsLength] = child
+
+				-- Add the child to the stack to process its children later.
 				stackSize = stackSize + 1
 				stack[stackSize] = child
 			end
 		end
 
+		-- Return the table containing all the descendants of the class.
 		return descendants
 	end
 
+	-- Check if the class is a descendant of the given target.
 	function class:IsDescendantOf(target)
-		assert(target, "IsDescendantOf target is invalid")
+		-- Ensure that the target is valid (not nil).
+		assert(target, 'IsDescendantOf target is invalid')
+
+		-- Start traversing the class hierarchy.
 		while self do
+			-- If the current class is a direct child of the target, return true.
 			if self.Parent == target then
 				return true
 			end
+
+			-- Move up to the parent class for the next iteration.
 			self = self.Parent
 		end
+
+		-- If no match is found during traversal, return false.
 		return false
 	end
 
+	-- Destroy the class and all its children.
 	function class:Destroy()
-		self.Parent = nilParent
+		-- Set the parent of the class to nil, effectively removing it from its parent's children list.
+		self.Parent = nilInstance
+
+		-- Traverse and destroy all children of the class.
 		for child in next, self._children do
+			-- Recursively destroy each child.
 			child:Destroy()
+
+			-- Set the child's parent to nil, removing it from its parent's children list.
 			self._children[child] = nil
 		end
 	end
 
+	-- Clear all children of the class without destroying them.
 	function class:ClearAllChildren()
+		-- Traverse and clear all children of the class.
 		for child in next, self._children do
+			-- Clear each child (but don't destroy them).
 			child:Destroy()
 		end
 	end
@@ -1409,17 +1539,23 @@ local function createInstanceClass(className, inherits)
 	return class
 end
 
-do
-	Instance = {}
 
-	function Instance.new(className, parent)
-		assert(classes[className], "invalid class"..className)
-		local self = classes[className].new()
-		if parent then
-			self.Parent = parent
-		end
-		return self
+
+
+
+Instance = {}
+
+function Instance.new(class_name, parent)
+	assert(classes[class_name], '[Error] Trying to instantiate a non-existing class: '..class_name)
+
+	local self = classes[class_name].new()
+
+	if parent then
+		print('[Warning] Avoid passing the parent argument on instantiation for optimal performance')
+		self.Parent = parent
 	end
+
+	return self
 end
 
 
@@ -1447,57 +1583,57 @@ end
 
 
 
-createInstanceClass("Terrain")
-createInstanceClass("Sound")
-createInstanceClass("Chat")
-createInstanceClass("StudioData")
-createInstanceClass("StarterPlayer")
-createInstanceClass("StarterPlayerScripts")
-createInstanceClass("StarterCharacterScripts")
-createInstanceClass("StarterPack")
-createInstanceClass("StarterGui")
-createInstanceClass("Geometry")
-createInstanceClass("StringValue")
-createInstanceClass("Debris")
-createInstanceClass("Selection")
-createInstanceClass("ServerStorage")
-createInstanceClass("Lighting")
-createInstanceClass("VirtualInputManager")
-createInstanceClass("Teams")
-createInstanceClass("EqualizerSoundEffect")
-createInstanceClass("TextLabel")
-createInstanceClass("ImageLabel")
-createInstanceClass("Folder")
-createInstanceClass("UnionOperation")
-createInstanceClass("Model")
-createInstanceClass("Humanoid")
-createInstanceClass("SpecialMesh")
-createInstanceClass("Decal")
-createInstanceClass("SpotLight")
-createInstanceClass("ManualWeld")
-createInstanceClass("BlockMesh")
-createInstanceClass("SelectionBox")
-createInstanceClass("SurfaceGui")
-createInstanceClass("Frame")
-createInstanceClass("Sky")
-createInstanceClass("ChatWindowConfiguration")
-createInstanceClass("ChatInputBarConfiguration")
-createInstanceClass("BubbleChatConfiguration")
 
-createInstanceClass("Player")
-createInstanceClass("PlayerGui")
 
-createInstanceClass("ScreenGui")
 
+create_instance_class('BlockMesh')
+create_instance_class('BubbleChatConfiguration')
+create_instance_class('Chat')
+create_instance_class('ChatInputBarConfiguration')
+create_instance_class('ChatWindowConfiguration')
+create_instance_class('Debris')
+create_instance_class('Decal')
+create_instance_class('EqualizerSoundEffect')
+create_instance_class('Folder')
+create_instance_class('Frame')
+create_instance_class('Geometry')
+create_instance_class('Humanoid')
+create_instance_class('ImageLabel')
+create_instance_class('Lighting')
+create_instance_class('ManualWeld')
+create_instance_class('Model')
+create_instance_class('Player')
+create_instance_class('PlayerGui')
+create_instance_class('ScreenGui')
+create_instance_class('Selection')
+create_instance_class('SelectionBox')
+create_instance_class('ServerStorage')
+create_instance_class('Sky')
+create_instance_class('Sound')
+create_instance_class('SpecialMesh')
+create_instance_class('SpotLight')
+create_instance_class('StarterCharacterScripts')
+create_instance_class('StarterGui')
+create_instance_class('StarterPack')
+create_instance_class('StarterPlayer')
+create_instance_class('StarterPlayerScripts')
+create_instance_class('StringValue')
+create_instance_class('StudioData')
+create_instance_class('SurfaceGui')
+create_instance_class('Teams')
+create_instance_class('Terrain')
+create_instance_class('TextLabel')
+create_instance_class('UnionOperation')
+create_instance_class('VirtualInputManager')
 
 
 
 
 do
-	local serializer = require("luaserializer")
-	local serialize = serializer.serialize
+	local serial = require('serial')
+	local serialize = serial.serialize
 
-	local RemoteEvent = createInstanceClass("RemoteEvent")
+	local RemoteEvent = create_instance_class('RemoteEvent')
 
 	local new = RemoteEvent.new
 
@@ -1511,28 +1647,30 @@ do
 	end
 
 	function RemoteEvent:FireServer(...)
-		print(...)
-		thePeer:send(serialize("OnServerEvent", ...))
+		print('send event', ...)
+		switchboard.sendTo(peer, 'event', ...)
 	end
 
 	function RemoteEvent:FireClient(player, ...)
-		print(...)
-		thePeer:send(serialize("OnClientEvent", ...))
+		switchboard.sendTo(player._socket, 'event', ...)
 	end
 
 	function RemoteEvent:FireAllClients(...)
-		print(...)
-		thePeer:send(serialize("OnClientEvent", ...))
+		local players = game.Players:GetChildren()
+		for i = 1, #players do
+			switchboard.send(players[i]._socket, 'event', ...)
+		end
 	end
 end
 
 do
-	local serializer = require("luaserializer")
+	local serial = require('serial')
 
-	local serialize = serializer.serialize
+	local serialize = serial.serialize
 	local yield = coroutine.yield
+	local running = coroutine.running
 
-	local RemoteFunction = createInstanceClass("RemoteFunction")
+	local RemoteFunction = create_instance_class('RemoteFunction')
 
 	function RemoteFunction.OnServerInvoke()
 	end
@@ -1541,24 +1679,24 @@ do
 	end
 
 	function RemoteFunction:InvokeServer(...)
-		print(...)
-		thePeer:send(serialize("OnServerInvoke", ...))
-		return yield("OnServerInvoke", self)
+		switchboard.sendTo(peer, 'invoke', ...)
+		invokingThread = running()
+		return yield('invoke', self)
 	end
 
 	function RemoteFunction:InvokeClient(player, ...)
-		print(...)
-		thePeer:send(serialize("OnClientInvoke", ...))
-		return yield("OnClientInvoke", self)
+		switchboard.sendTo(player._socket, 'invoke', ...)
+		invokingThread = running()
+		return yield('invoke', self)
 	end
 end
 
-createInstanceClass("LocalScript")
-createInstanceClass("ModuleScript")
-createInstanceClass("Script")
+create_instance_class('LocalScript')
+create_instance_class('ModuleScript')
+create_instance_class('Script')
 
 do
-	local Workspace = createInstanceClass("Workspace")
+	local Workspace = create_instance_class('Workspace')
 
 	local new = Workspace.new
 
@@ -1571,18 +1709,18 @@ do
 	end
 
 	function Workspace:FindPartsInRegion3()
-		print("FindPartsInRegion3")
+		print('FindPartsInRegion3')
 		return {}
-	end--TODO
+	end -- Mada
 
 	function Workspace:Raycast()
-		print("Raycast")
+		print('Raycast')
 		return {}
-	end--TODO
+	end -- Mada
 end
 
 do
-	local BasePart = createInstanceClass("BasePart")
+	local BasePart = create_instance_class('BasePart')
 
 	BasePart.CFrame = CFrame.new()
 	BasePart.Size = Vector3.new(2, 1, 4)
@@ -1592,19 +1730,19 @@ do
 end
 
 do
-	local Camera = createInstanceClass("Camera")
+	local Camera = create_instance_class('Camera')
 
 	Camera.FieldOfView = 70
 end
 
 --[[
 local function getBasePartShape(basePart)
-	return basePart.ClassName == "Part" and basePart.Shape or basePart.ClassName
+	return basePart.ClassName == 'Part' and basePart.Shape or basePart.ClassName
 end
---]]
+]]
 
 do
-	local Part = createInstanceClass("Part", {"BasePart"})
+	local Part = create_instance_class('Part', {'BasePart'})
 
 	local newIndex = {}
 
@@ -1621,7 +1759,7 @@ do
 	end
 
 	function newIndex.Parent(self, parent0, parent)
-		parent0 = parent0 or nilParent
+		parent0 = parent0 or nilInstance
 
 		parent0._children[self] = nil
 		parent._children[self] = true
@@ -1650,7 +1788,7 @@ do
 end
 
 do
-	local WedgePart = createInstanceClass("WedgePart", {"BasePart"})
+	local WedgePart = create_instance_class('WedgePart', {'BasePart'})
 
 	local newIndex = {}
 
@@ -1667,7 +1805,7 @@ do
 	end
 
 	function newIndex.Parent(self, parent0, parent)
-		parent0 = parent0 or nilParent
+		parent0 = parent0 or nilInstance
 
 		parent0._children[self] = nil
 		parent._children[self] = true
@@ -1695,40 +1833,40 @@ end
 
 local services = {}
 
---services
-createInstanceClass("SoundService")
-createInstanceClass("NonReplicatedCSGDictionaryService")
-createInstanceClass("CSGDictionaryService")
-createInstanceClass("TimerService")
-createInstanceClass("TweenService")
-createInstanceClass("MaterialService")
-createInstanceClass("PermissionsService")
-createInstanceClass("PlayerEmulatorService")
-createInstanceClass("LocalizationService")
-createInstanceClass("TeleportService")
-createInstanceClass("CollectionService")
-createInstanceClass("PhysicsService")
-createInstanceClass("InsertService")
-createInstanceClass("GamePassService")
-createInstanceClass("CookiesService")
-createInstanceClass("VRService")
-createInstanceClass("ContextActionService")
-createInstanceClass("ScriptService")
-createInstanceClass("AssetService")
-createInstanceClass("TouchInputService")
-createInstanceClass("AnalyticsService")
-createInstanceClass("ServerScriptService")
-createInstanceClass("LuaWebService")
-createInstanceClass("ProcessInstancePhysicsService")
-createInstanceClass("LanguageService")
-createInstanceClass("LodDataService")
-createInstanceClass("ServiceVisibilityService")
-createInstanceClass("HttpService")
-createInstanceClass("TestService")
-createInstanceClass("GuidRegistryService")
-createInstanceClass("TextChatService")
-createInstanceClass("ProximityPromptService")
-createInstanceClass("VoiceChatService")
+-- services
+create_instance_class('AnalyticsService')
+create_instance_class('AssetService')
+create_instance_class('CollectionService')
+create_instance_class('ContextActionService')
+create_instance_class('CookiesService')
+create_instance_class('CSGDictionaryService')
+create_instance_class('GamePassService')
+create_instance_class('GuidRegistryService')
+create_instance_class('HttpService')
+create_instance_class('InsertService')
+create_instance_class('LanguageService')
+create_instance_class('LocalizationService')
+create_instance_class('LodDataService')
+create_instance_class('LuaWebService')
+create_instance_class('MaterialService')
+create_instance_class('NonReplicatedCSGDictionaryService')
+create_instance_class('PermissionsService')
+create_instance_class('PhysicsService')
+create_instance_class('PlayerEmulatorService')
+create_instance_class('ProcessInstancePhysicsService')
+create_instance_class('ProximityPromptService')
+create_instance_class('ScriptService')
+create_instance_class('ServerScriptService')
+create_instance_class('ServiceVisibilityService')
+create_instance_class('SoundService')
+create_instance_class('TeleportService')
+create_instance_class('TestService')
+create_instance_class('TextChatService')
+create_instance_class('TimerService')
+create_instance_class('TouchInputService')
+create_instance_class('TweenService')
+create_instance_class('VoiceChatService')
+create_instance_class('VRService')
 
 do
 	local UserInputService = {}
@@ -1742,11 +1880,10 @@ do
 end
 
 do
-	local ReplicatedFirst = createInstanceClass("ReplicatedFirst")
+	local ReplicatedFirst = create_instance_class('ReplicatedFirst')
 
 	function ReplicatedFirst:RemoveDefaultLoadingScreen()
-		print("RemoveDefaultLoadingScreen")
-	end
+	end -- Mada
 
 	services.ReplicatedFirst = ReplicatedFirst
 end
@@ -1761,7 +1898,7 @@ do
 end
 
 do
-	local Players = createInstanceClass("Players")
+	local Players = create_instance_class('Players')
 
 	local new = Players.new
 
@@ -1777,7 +1914,7 @@ do
 end
 
 do
-	local ReplicatedStorage = createInstanceClass("ReplicatedStorage")
+	local ReplicatedStorage = create_instance_class('ReplicatedStorage')
 
 	local new = ReplicatedStorage.new
 
@@ -1791,7 +1928,7 @@ do
 end
 
 do
-	local Game = createInstanceClass("Game")
+	local Game = create_instance_class('Game')
 
 	function Game:GetService(serviceName)
 		return services[serviceName]
@@ -1853,10 +1990,10 @@ end
 -- wait
 --[[
 do
-	local ffi = require("ffi")
+	local ffi = require('ffi')
 
-	if ffi.os == "windows" then
-		ffi.cdef("void Sleep(int);")
+	if ffi.os == 'windows' then
+		ffi.cdef('void Sleep(int);')
 
 		local Sleep = ffi.C.Sleep
 
@@ -1865,7 +2002,7 @@ do
 			return true
 		end
 	else
-		ffi.cdef("int poll(struct pollfd *, unsigned long, int);")
+		ffi.cdef('int poll(struct pollfd *, unsigned long, int);')
 
 		local poll = ffi.C.poll
 
@@ -1875,13 +2012,13 @@ do
 		end
 	end
 end
---]]
+]]
 
 -- typeof
 do
 	function typeof(object)
 		local type = type(object)
-		return type == "table" and object.TypeName or type
+		return type == 'table' and object.TypeName or type
 	end
 end
 
@@ -1898,14 +2035,14 @@ end
 do
 	local yield = coroutine.yield
 
-	local returnedScripts = {}
+	local cachedScripts = {}
 
 	function robloxRequire(script)
 		if not script.lostVirginity then
 			script.lostVirginity = true
-			returnedScripts[script] = yield("waitdie", script._thread)
+			cachedScripts[script] = yield('die', script._thread)
 		end
-		return returnedScripts[script]
+		return cachedScripts[script]
 	end
 end
 
@@ -1928,35 +2065,37 @@ end
 
 
 
-love.keypressed = RBXScriptSignal.new()
-love.wheelmoved = RBXScriptSignal.new()
-love.mousemoved = RBXScriptSignal.new()
-love.load = RBXScriptSignal.new()
-love.update = RBXScriptSignal.new()
 love.draw = RBXScriptSignal.new()
-love.resize = RBXScriptSignal.new()
+love.keypressed = RBXScriptSignal.new()
+love.load = RBXScriptSignal.new()
+love.mousemoved = RBXScriptSignal.new()
 love.mousepressed = RBXScriptSignal.new()
 love.mousereleased = RBXScriptSignal.new()
+love.resize = RBXScriptSignal.new()
+love.update = RBXScriptSignal.new()
+love.wheelmoved = RBXScriptSignal.new()
 
-love.graphics.setDefaultFilter("nearest", "nearest", 1)
+
+
+love.graphics.setDefaultFilter('nearest', 'nearest', 1)
 
 -- Make buffers and set global canvas size
 love.resize:Connect(function(sx, sy)
 	csx = sx
 	csy = sy
 
-	local depthBuffer = love.graphics.newCanvas(csx, csy, {type = "2d"; format = "depth24";})
+	local depthBuffer = love.graphics.newCanvas(csx, csy, {type = '2d'; format = 'depth24';})
 
 	geometryBuffer = {
-		love.graphics.newCanvas(csx, csy, {type = "2d"; format = "rgba8";}),
-		love.graphics.newCanvas(csx, csy, {type = "2d"; format = "rgba8";}),
-		love.graphics.newCanvas(csx, csy, {type = "2d"; format = "rgba8";}),
-		love.graphics.newCanvas(csx, csy, {type = "2d"; format = "rgba8";}),
+		love.graphics.newCanvas(csx, csy, {type = '2d'; format = 'rgba8';}),
+		love.graphics.newCanvas(csx, csy, {type = '2d'; format = 'rgba8';}),
+		love.graphics.newCanvas(csx, csy, {type = '2d'; format = 'rgba8';}),
+		love.graphics.newCanvas(csx, csy, {type = '2d'; format = 'rgba8';}),
 		depthstencil = depthBuffer;
 	}
 
 	compositeBuffer = {
-		love.graphics.newCanvas(csx, csy, {type = "2d"; format = "rgba8";}),
+		love.graphics.newCanvas(csx, csy, {type = '2d'; format = 'rgba8';}),
 		depthstencil = depthBuffer;
 	}
 end)
@@ -1983,9 +2122,203 @@ love.resize(love.graphics.getDimensions())
 
 
 
+local switchboard = {}
+do
+	local bufferReceiveArgument = '*l'
+
+	local serial = require('serial')
+	local socket = require('socket')
+
+	local deserialize = serial.deserialize
+	local serialize = serial.serialize
+	local insert = table.insert
+	local remove = table.remove
+
+	local peers = {}
+	local peersInverse = {}
+
+	switchboard.onConnect = RBXScriptSignal.new()
+	switchboard.onDisconnect = RBXScriptSignal.new()
+	switchboard.onReceive = RBXScriptSignal.new()
+
+	function switchboard.connect(peer)
+		peersInverse[peer] = true
+		insert(peers, peer)
+		switchboard.onConnect(peer)
+	end
+
+	function switchboard.run()
+		for i = 1, #peers do
+			local peer = peers[i]
+
+			while true do
+				local bytes, receiveStatus = peer:receive(bufferReceiveArgument)
+
+				if bytes then
+					local data = deserialize(bytes)
+
+					switchboard.onReceive(peer, unpack(data)) -- tuple unpacking
+				elseif receiveStatus == 'closed' then
+					switchboard.onDisconnect(peer)
+					peersInverse[peer] = nil
+					for i = 1, #peers do
+						if peers[i] == peer then
+							remove(peers, i)
+							break
+						end
+					end
+					peer:close()
+					break
+				elseif not bytes then
+					break
+				end
+			end
+		end
+
+		--[[
+			for peer in next, peersInverse do
+			local bytes, status = peer:receive(bufferReceiveArgument)
+
+			print(bytes, status)
+
+			if bytes then
+				local data = deserialize(bytes)
+
+				switchboard.onReceive(peer, unpack(data)) -- tuple unpacking
+			elseif status == 'closed' then
+				switchboard.onDisconnect(peer)
+				peersInverse[peer] = nil
+				peer:close()
+			end
+		end
+		]]
+	end
+
+	function switchboard.send(...)
+		for i = 1, #peers do
+			switchboard.sendTo(peers[i], ...)
+		end
+	end
+
+	function switchboard.sendBut(ignoredPeer, ...)
+		-- Lie for a little bit
+		peersInverse[ignoredPeer] = nil
+
+		for peer in next, peersInverse do
+			switchboard.sendTo(peer, ...)
+		end
+
+		-- And then undo the lie
+		peersInverse[ignoredPeer] = true
+	end
+
+	function switchboard.sendTo(peer, ...)
+		peer:send(serialize(...))
+	end
+end
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+local network = {}
+do
+	network.onConnect = switchboard.onConnect
+	network.onDisconnect = switchboard.onDisconnect
+
+	local socket = require('socket')
+
+	local callers = {}
+
+	function network.onReceive(name)
+		if not callers[name] then
+			callers[name] = RBXScriptSignal.new()
+		end
+		return callers[name]
+	end
+
+	switchboard.onReceive:Connect(function(socket, name, ...)
+		assert(callers[name], 'No caller by name: '..name)
+		callers[name](socket, ...)
+	end)
+
+	function network.client(address, port)
+		local host = socket.tcp()
+		host:settimeout(0) -- non-blocking mode
+
+		host:connect(address, port)
+
+		switchboard.connect(host)
+
+		return host
+	end
+
+	function network.server(address, port)
+		local host = socket.bind(address, port)
+		host:settimeout(0) -- non-blocking mode
+
+		function network.pollPeers()
+			local peer = host:accept()
+			while peer do
+				peer:settimeout(0)
+				switchboard.connect(peer)
+				peer = host:accept()
+			end
+		end
+	end
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+local game = Instance.new('Game')
 
 
 
@@ -1994,20 +2327,19 @@ love.resize(love.graphics.getDimensions())
 local lovlox = {}
 
 do
-	local xml2lua = require("xml2lua/xml2lua")
-	local tree = require("xml2lua/tree")
-	local enet = require("enet")
+	local xml2lua = require('xml2lua/xml2lua')
+	local tree = require('xml2lua/tree')
 
 	local create = coroutine.create
 
 	local match = {}
 
-	local function recurse(node, prev)
-		for i, v in next, node do
-			if i ~= "_attr" and type(i) == "string" then
-				for _, childNode in next, v do
+	local function recurse_rbxlx_node(dom_node, previous)
+		for i, v in next, dom_node do
+			if i ~= '_attr' and type(i) == 'string' then
+				for _, child_node in next, v do
 					if match[i] then
-						match[i](childNode, prev)
+						match[i](child_node, previous)
 					else
 						-- Branch
 					end
@@ -2016,139 +2348,173 @@ do
 		end
 	end
 
-	function match.roblox(node)
-		game = Instance.new("Game")
-		recurse(node, game)
+	function match.roblox(dom_node)
+		recurse_rbxlx_node(dom_node, game)
 	end
+
+	local random = math.random
 
 	-- Create a new Instance of the class
-	function match.Item(node, prev)
-		recurse(node, Instance.new(node._attr.class, prev))
+	function match.Item(dom_node, parent)
+		local class_name = dom_node._attr.class
+		local instance = Instance.new(class_name)
+		instance.Parent = parent
+
+		local referent_id = dom_node._attr.referent
+
+		-- Set the referent_id to this object
+		instance_from_referent_id[referent_id] = self
+
+		recurse_rbxlx_node(dom_node, instance)
 	end
 
-	match.Properties = recurse
-
-	local tobool = {}
-	tobool["true"] = true
-	tobool["false"] = false
-
-	function match.string(node, prev)
-		prev[node._attr.name] = node[1]
+	function match.Ref(dom_node, instance)
+		local referent_id = dom_node[1]
+		local attribute_name = dom_node._attr.name
+		instance[attribute_name] = instance_from_referent_id[referent_id]
 	end
 
-	function match.bool(node, prev)
-		prev[node._attr.name] = tobool[node[1]]
+	match.Properties = recurse_rbxlx_node
+
+	local to_bool = {}
+	to_bool['true'] = true
+	to_bool['false'] = false
+
+	function match.string(dom_node, previous)
+		previous[dom_node._attr.name] = dom_node[1]
 	end
 
-	function match.float(node, prev)
-		prev[node._attr.name] = tonumber(node[1])
+	function match.bool(dom_node, previous)
+		previous[dom_node._attr.name] = to_bool[dom_node[1]]
 	end
 
-	function match.int(node, prev)
-		prev[node._attr.name] = tonumber(node[1])
+	function match.float(dom_node, previous)
+		previous[dom_node._attr.name] = tonumber(dom_node[1])
 	end
 
-	function match.token(node, prev)
-		prev[node._attr.name] = tonumber(node[1])
+	function match.int(dom_node, previous)
+		previous[dom_node._attr.name] = tonumber(dom_node[1])
 	end
 
-	local scriptInits = {}
-
-	function scriptInits.Script(script, thread)
-		stepThreads[thread] = true
+	function match.token(dom_node, previous)
+		previous[dom_node._attr.name] = tonumber(dom_node[1])
 	end
 
-	function scriptInits.LocalScript(script, thread)
-		stepThreads[thread] = true
+	local scriptInitializers = {}
+
+	function scriptInitializers.Script(script, thread)
+		scheduler.queueResumption(thread)
 	end
 
-	function scriptInits.ModuleScript(script, thread)
+	function scriptInitializers.LocalScript(script, thread)
+		scheduler.queueResumption(thread)
+	end
+
+	function scriptInitializers.ModuleScript(script, thread)
 		script._thread = thread
 	end
 
 	if runningAs.server then
-		function scriptInits.LocalScript()
+		function scriptInitializers.LocalScript()
 		end
 	elseif runningAs.client then
-		function scriptInits.Script()
+		function scriptInitializers.Script()
 		end
 	end
 
-	function match.ProtectedString(node, prev)
-		local entry = load("return function(script, require)return function()"..node[1].." end end")()(prev, robloxRequire)
+	function match.ProtectedString(dom_node, script)
+		local entry = load('return function(script, require) return function()'..dom_node[1]..' end end')()(script, robloxRequire)
 		local thread = create(entry)
-		scriptInits[prev.ClassName](prev, thread)
+		scriptInitializers[script.ClassName](script, thread)
 	end
 
-	function match.Vector3(node, prev)
-		if node._attr.name == "size" then
-			node._attr.name = "Size"
+	function match.Vector3(dom_node, previous)
+		if dom_node._attr.name == 'size' then
+			dom_node._attr.name = 'Size'
 		end
-		prev[node._attr.name] = Vector3.new(tonumber(node.X[1][1]), tonumber(node.Y[1][1]), tonumber(node.Z[1][1]))
+		previous[dom_node._attr.name] = Vector3.new(tonumber(dom_node.X[1][1]), tonumber(dom_node.Y[1][1]), tonumber(dom_node.Z[1][1]))
 	end
 
-	function match.Color3uint8(node, prev)
-		if node._attr.name == "Color3uint8" then
-			node._attr.name = "Color"
+	function match.Color3uint8(dom_node, previous)
+		if dom_node._attr.name == 'Color3uint8' then
+			dom_node._attr.name = 'Color'
 		end
-		prev[node._attr.name] = Color3.fromColor3uint8(node[1])
+		previous[dom_node._attr.name] = Color3.fromColor3uint8(dom_node[1])
 	end
 
-	function match.Color3(node, prev)
-		prev[node._attr.name] = Color3.new(tonumber(node.R[1][1]), tonumber(node.G[1][1]), tonumber(node.B[1][1]))
+	function match.Color3(dom_node, previous)
+		previous[dom_node._attr.name] = Color3.new(tonumber(dom_node.R[1][1]), tonumber(dom_node.G[1][1]), tonumber(dom_node.B[1][1]))
 	end
 
-	-- CoordinateFrame -> CFrame
-	function match.CoordinateFrame(node, prev)
-		prev[node._attr.name] = CFrame.new(
-			tonumber(node.X[1][1]),
-			tonumber(node.Y[1][1]),
-			tonumber(node.Z[1][1]),
-			tonumber(node.R00[1][1]),
-			tonumber(node.R01[1][1]),
-			tonumber(node.R02[1][1]),
-			tonumber(node.R10[1][1]),
-			tonumber(node.R11[1][1]),
-			tonumber(node.R12[1][1]),
-			tonumber(node.R20[1][1]),
-			tonumber(node.R21[1][1]),
-			tonumber(node.R22[1][1])
+	function match.CoordinateFrame(dom_node, previous)
+		previous[dom_node._attr.name] = CFrame.new(
+			tonumber(dom_node.X[1][1]),
+			tonumber(dom_node.Y[1][1]),
+			tonumber(dom_node.Z[1][1]),
+			tonumber(dom_node.R00[1][1]),
+			tonumber(dom_node.R01[1][1]),
+			tonumber(dom_node.R02[1][1]),
+			tonumber(dom_node.R10[1][1]),
+			tonumber(dom_node.R11[1][1]),
+			tonumber(dom_node.R12[1][1]),
+			tonumber(dom_node.R20[1][1]),
+			tonumber(dom_node.R21[1][1]),
+			tonumber(dom_node.R22[1][1])
 		)
 	end
 
-	function lovlox.loadPlace(path)
-		love.window.setTitle(path:sub(1, -7))
-
+	local function load_place_file(path)
 		xml2lua.parser(tree):parse(xml2lua.loadFile(path))
-		recurse(tree.root)
+		recurse_rbxlx_node(tree.root)
+	end
 
-		local runService = game:GetService("RunService")
+	function lovlox.hostPlace(path, address, port)
+		local place_title = path:sub(1, -7)
 
-		function lovlox.update(dt)
-			runScheduler()
+		local serial = require('serial')
+		local serialize = serial.serialize
 
-			runService.RenderStepped(dt)
-			runService.Heartbeat(time(), dt)
+		love.filesystem.setIdentity(place_title)
+		love.window.setTitle(place_title)
+
+		load_place_file(path)
+
+		network.server(address, port)
+
+		network.onConnect:Connect(function(peer)
+			switchboard.sendTo(peer, 'place_title', place_title)
+
+			local descendants = game:GetDescendants()
+			for i = 1, #descendants do
+				local instance = descendants[i]
+				print(instance)
+				switchboard.sendTo(peer, 'newInstance', instance.ClassName, instance._referent_id)
+			end
+
+			switchboard.sendTo(peer, 'endParts')
+		end)
+
+		local run_service = game:GetService('RunService')
+
+		function lovlox.step(dt)
+			network.pollPeers()
+
+			switchboard.run()
+
+			-- run scheduler
+			scheduler.run()
+
+			run_service.Heartbeat(time(), dt)
 
 			for _, child in next, workspace:GetDescendants() do
 				child.Parent = child.Parent
-			end--uhh render the geometry
-
+			end -- uhh render the geometry inefficiently
 		end
 
-		Instance.new("RemoteEvent", game.ReplicatedStorage)
-		Instance.new("RemoteFunction", game.ReplicatedStorage)
+		-- game.Players.LocalPlayer = game.Players[MY_IP_ADDRESS]
 
-		remoteMap = {}
-		remoteMap.OnServerEvent = game.ReplicatedStorage.RemoteEvent.OnServerEvent
-		remoteMap.OnClientEvent = game.ReplicatedStorage.RemoteEvent.OnClientEvent
-		remoteMap.OnServerInvoke = game.ReplicatedStorage.RemoteFunction.OnServerInvoke
-		remoteMap.OnClientInvoke = game.ReplicatedStorage.RemoteFunction.OnClientInvoke
-
+		--[[
 		if runningAs.client then
-			local player = Instance.new("Player", game.Players)
-			player.Name = "me"
-
 			player.Chatted = RBXScriptSignal.new()
 
 			function player:GetMouse()
@@ -2162,67 +2528,367 @@ do
 				return self
 			end
 
-			local playerGui = Instance.new("PlayerGui", player)
+			local playerGui = Instance.new('PlayerGui')
+			playerGui.Parent = player
 
 			game.Players.LocalPlayer = player
+		end
+		]]
 
-			workspace.CurrentCamera = workspace.Camera--uhh manual ref...
+		local function doItAll()
+			remoteMap = {}
+			if runningAs.server then
+				game.ReplicatedStorage.ChildAdded:Connect(function(child)
+					if child.ClassName == 'RemoteEvent' then
+						remoteMap.event = game.ReplicatedStorage.RemoteEvent.OnServerEvent
+					elseif child.ClassName == 'RemoteFunction' then
+						remoteMap.invoke = game.ReplicatedStorage.RemoteFunction.OnServerInvoke
+					end
+				end)
+			elseif runningAs.client then
+				local remoteEvent = Instance.new('RemoteEvent')
+				local remoteFunction = Instance.new('RemoteFunction')
+
+				remoteEvent.Parent = game.ReplicatedStorage
+				remoteFunction.Parent = game.ReplicatedStorage
+
+				remoteMap.event = game.ReplicatedStorage.RemoteEvent.OnClientEvent
+				remoteMap.invoke = game.ReplicatedStorage.RemoteFunction.OnClientInvoke
+			end
+
+			love.keypressed:Connect(function(k)
+				if k == 'c' then
+					love.mouse.setRelativeMode(not love.mouse.getRelativeMode())
+				elseif k == 'printscreen' then
+					love.graphics.captureScreenshot(tick()..'.png')
+				end
+			end)
+
+			local function create_projection_frustum(v, a, n, f)
+				local i = 1/(n - f)
+				return {
+					a*v, 0, 0, 0,
+					0, v, 0, 0,
+					0, 0, (n + f)*i, 2*n*f*i,
+					0, 0, -1, 0
+				}
+			end
+
+
+
+			love.update:Connect(lovlox.step)
+
+
+
+			local hdri = love.graphics.newImage('hdris/tennisnight.jpg')
+
+			local camera = workspace.CurrentCamera
+
+			love.draw:Connect(function()
+				local cameraP = {camera.CFrame.Position:GetComponents()}
+				local cameraO = {Quaternion.fromCFrame(camera.CFrame):GetComponents()}
+				local cameraT = create_projection_frustum(1, csy/csx, 0.1, 100000)
+
+				love.graphics.setDepthMode('less', true)
+				love.graphics.setMeshCullMode('front')
+
+				-- draw to geometry buffer
+				love.graphics.setCanvas(geometryBuffer)
+				love.graphics.clear()
+
+				love.graphics.setShader(geometryShader)
+				geometryShader:send('cameraP', cameraP)
+				geometryShader:send('cameraO', cameraO)
+				geometryShader:send('cameraT', cameraT)
+
+				for i = 1, #meshes do
+					meshes[i]:Draw()
+				end
+
+				-- sky?
+				--[[
+				love.graphics.setCanvas()
+
+				love.graphics.setShader(skyShader)
+				skyShader:send('cameraO', cameraO)
+				-- skyShader:send('cameraT', cameraT)
+				skyShader:send('skyTex', hdri)
+
+				love.graphics.draw(compositeBuffer[1])
+				]]
+
+				-- draw to screen
+				love.graphics.setCanvas()
+
+				love.graphics.setShader(debandShader)
+				debandShader:send('worldNs', geometryBuffer[2])
+				debandShader:send('worldCs', geometryBuffer[3])
+
+				love.graphics.draw(compositeBuffer[1])
+
+				-- fps
+				love.graphics.reset()
+				love.graphics.print(love.timer.getFPS())
+			end)
 		end
 
-		local host
+		doItAll()
 
-		if runningAs.server then
-			host = enet.host_create("localhost:57005")
-		elseif runningAs.client then
-			host = enet.host_create()
-			host:connect("localhost:57005")
-		end
-
-
-		local serializer = require("luaserializer")
-		local unserialize = serializer.unserialize
-
+		-- network.onReceive('bounce')
+		--[[
 		love.update:Connect(function()
 			local event = host:service()
 			while event do
-				if event.type == "receive" then
-					local data, n = unserialize(event.data)
-					--print(unpack(data))
+				event.switchboard.sendTo(peer, 'ping')
 
-					local runner = runners[data[2]]
-					if runner then
-						runner(unpack(data, 3, n))
+				if event.type == 'receive' then
+					local data = deserialize(event.data)
+
+					print('NETWORK', unpack(data))
+
+					local player = game.Players[tostring(event.peer)]
+
+					if data[1] == 'event' then
+						if runningAs.server then
+							remoteMap.event(player, unpack(data, 2))
+						elseif runningAs.client then
+							remoteMap.event(unpack(data, 2))
+						end
+					elseif data[1] == 'invoke' then
+						if runningAs.server then
+							event.switchboard.sendTo(peer, 'bounce', remoteMap.invoke(player, unpack(data, 2)))
+						elseif runningAs.client then
+							event.switchboard.sendTo(peer, 'bounce', remoteMap.invoke(unpack(data, 2)))
+						end
+					elseif data[1] == 'bounce' then
+						--print(unpack(data))
+						--print(invokingThread)
+						scheduler.queueResumption(invokingThread, unpack(data, 2))
+						invokingThread = nil -- only needed for when things go wrong.
 					end
-
-					--remoteMap[data[1]](unpack(data, 2, n))
-				elseif event.type == "connect" then
-					print("connected to", event.peer)
-
-					thePeer = event.peer
-
-					if runningAs.server then
-						local player = Instance.new("Player", game.Players)
-						player.Name = tostring(event.peer)
-						connectionsList[event.peer] = player
-					end
-
-					love.update:Connect(lovlox.update)
-
-				elseif event.type == "disconnect" then
-					if runningAs.server then
-						print(event.peer, "disconnected")
-						connectionsList[event.peer]:Destroy()
-					elseif runningAs.client then
-						print("disconnected from server")
-					end
+				elseif event.type == 'connect' then
+					local player = Instance.new('Player')
+					player.Name = tostring(event.peer)
+					player._socket = event.peer
+					player.Parent = game.Players
+				elseif event.type == 'disconnect' then
+					local player = game.Players[tostring(event.peer)]
+					player:Destroy()
+					print(event.peer, 'disconnected')
 				end
 
 				event = host:service()
 			end
+		end)
+		]]
 
+		-- return game
+	end
+
+	function lovlox.connectToServer(address, port)
+		local serial = require('serial')
+		local serialize = serial.serialize
+
+		network.onReceive('place_title'):Connect(function(_, place_title)
+			love.window.setTitle(place_title)
 		end)
 
-		--return game
+		local peer = network.client(address, port)
+
+		love.update:Connect(switchboard.run)
+
+		--[[
+		love.update:Connect(function()
+			local event = host:service()
+			while event do
+				event.switchboard.sendTo(peer, 'ping')
+
+				if event.type == 'receive' then
+					--print(data[1])
+
+					--print('NETWORK', unpack(data))
+
+					--local player = game.Players[tostring(event.peer)]
+
+					local data = deserialize(event.data)
+					network.receiveSignals[data[1]]-- (event.peer, unpack(data, 2))
+
+					--[[
+					if data[1] == 'event' then
+						-- remoteMap.event(unpack(data, 2))
+					elseif data[1] == 'invoke' then
+						-- event.switchboard.sendTo(peer, 'bounce', remoteMap.invoke(unpack(data, 2)))
+					elseif data[1] == 'bounce' then
+						scheduler.queueResumption(invokingBounceThread, unpack(data, 2))
+						invokingBounceThread = nil -- only needed for when things go wrong.
+					elseif data[1] == 'uhh' then
+
+					end
+				elseif event.type == 'connect' then
+					network.onConnect(event.peer)
+					-- load_place_file()
+					-- peer = event.peer
+					-- doItAll()
+					-- onParsedPlace()
+				elseif event.type == 'disconnect' then
+					network.onDisconnect(event.peer)
+				end
+
+				event = host:service()
+			end
+		end)
+		]]
+
+		local onParsedPlace = RBXScriptSignal.new()
+
+		local onReceivePart
+		onReceivePart = network.onReceive('newInstance'):Connect(function(peer, class_name, referent_id)
+			local parent = instance_from_referent_id[referent_id]
+
+			--print(parent)
+
+			local instance = Instance.new(class_name)
+			--instance.Parent = parent
+		end)
+
+		network.onReceive('endParts'):Once(function()
+			print('No longer receiving initial parts')
+			onReceivePart:Disconnect()
+			onParsedPlace()
+		end)
+
+		onParsedPlace:Connect(function()
+			function lovlox.step(dt)
+				-- run scheduler
+				scheduler.run()
+
+				run_service.RenderStepped(dt)
+				run_service.Heartbeat(time(), dt)
+
+				for _, child in next, workspace:GetDescendants() do
+					child.Parent = child.Parent
+				end -- uhh render the geometry inefficiently
+			end
+
+			love.update:Connect(lovlox.step)
+		end)
+
+		--[[
+		player.Chatted = RBXScriptSignal.new()
+
+		function player:GetMouse()
+			local self = {}
+			self.Button1Down = RBXScriptSignal.new()
+			self.Button1Up = RBXScriptSignal.new()
+			self.Button2Down = RBXScriptSignal.new()
+			self.Button2Up = RBXScriptSignal.new()
+			self.KeyDown = RBXScriptSignal.new()
+			self.KeyUp = RBXScriptSignal.new()
+			return self
+		end
+
+		local playerGui = Instance.new('PlayerGui')
+		playerGui.Parent = player
+
+		game.Players.LocalPlayer = player
+		]]
+
+
+
+
+
+
+
+
+
+
+		--[[
+		local MSC = 1/512
+
+		love.keypressed:Connect(function(k)
+			if k == 'c' then
+				love.mouse.setRelativeMode(not love.mouse.getRelativeMode())
+			elseif k == 'printscreen' then
+				love.graphics.captureScreenshot(tick()..'.png')
+			end
+		end)
+
+		local camera = workspace.Camera
+		camera.CFrame = CFrame.new(0, 30, 50)
+
+		local function fromAxisAngle(v)
+			return v.Magnitude > 0 and CFrame.fromAxisAngle(v.Unit, v.Magnitude) or CFrame.new()
+		end
+
+		love.mousemoved:Connect(function(_, _, dx, dy)
+			camera.CFrame = camera.CFrame*fromAxisAngle(Vector3.new(-MSC*dy, -MSC*dx, 0))
+		end)
+
+		love.update:Connect(function(dt)
+			local targetVelocity = Vector3.new(
+				(love.keyboard.isDown('d') and 1 or 0) + (love.keyboard.isDown('a') and -1 or 0),
+				(love.keyboard.isDown('e') and 1 or 0) + (love.keyboard.isDown('q') and -1 or 0),
+				(love.keyboard.isDown('s') and 1 or 0) + (love.keyboard.isDown('w') and -1 or 0)
+			)
+
+			camera.CFrame = camera.CFrame*CFrame.new(32*dt*targetVelocity)
+		end)
+
+		love.update:Connect(lovlox.step)
+		]]
+
+
+		local hdri = love.graphics.newImage('hdris/tennisnight.jpg')
+
+		--[[
+		love.draw:Connect(function()
+			local cameraP = {camera.CFrame.p:GetComponents()}
+			local cameraO = {Quaternion.fromCFrame(camera.CFrame):GetComponents()}
+			local cameraT = create_projection_frustum(1, csy/csx, 0.1, 10000)
+
+			love.graphics.setDepthMode('less', true)
+			love.graphics.setMeshCullMode('front')
+
+			-- draw to geometry buffer
+			love.graphics.setCanvas(geometryBuffer)
+			love.graphics.clear()
+
+			love.graphics.setShader(geometryShader)
+			geometryShader:send('cameraP', cameraP)
+			geometryShader:send('cameraO', cameraO)
+			geometryShader:send('cameraT', cameraT)
+
+			for i = 1, #meshes do
+				meshes[i]:Draw()
+			end
+
+			-- sky?
+			--[[
+			love.graphics.setCanvas()
+
+			love.graphics.setShader(skyShader)
+			skyShader:send('cameraO', cameraO)
+			--skyShader:send('cameraT', cameraT)
+			skyShader:send('skyTex', hdri)
+
+			love.graphics.draw(compositeBuffer[1])
+			]]
+
+			--[[
+			-- draw to screen
+			love.graphics.setCanvas()
+
+			love.graphics.setShader(debandShader)
+			debandShader:send('worldNs', geometryBuffer[2])
+			debandShader:send('worldCs', geometryBuffer[3])
+
+			love.graphics.draw(compositeBuffer[1])
+
+			-- fps
+			love.graphics.reset()
+			love.graphics.print(love.timer.getFPS())
+		end)
+		]]
 	end
 end
 
@@ -2237,18 +2903,14 @@ end
 
 
 
---lovlox.loadPlace("freebody.rbxlx")
-lovlox.loadPlace("bowmen2.rbxlx")
 
 
 
-if runningAs.client then
-	local part = Instance.new("Part", workspace)
 
-	game:GetService("RunService").RenderStepped:Connect(function()
-		part.CFrame = workspace.CurrentCamera.CFrame*CFrame.new(0, 0, -10)
-	end)
-end
+
+
+
+
 
 
 
@@ -2313,8 +2975,8 @@ local light = {}
 
 do
 	-- outer radius of 1:
-	-- local u = sqrt(0.1*(5 - sqrt(5)))
-	-- local v = sqrt(0.1*(5 + sqrt(5)))
+	--local u = sqrt(0.1*(5 - sqrt(5)))
+	--local v = sqrt(0.1*(5 + sqrt(5)))
 	-- inner radius of 1:
 	local u = sqrt(1.5*(7 - 3*sqrt(5)))
 	local v = sqrt(1.5*(3 - sqrt(5)))
@@ -2357,7 +3019,7 @@ do
 		d, l, h,
 	}
 
-	lightmesh = love.graphics.newMesh(vertexAttributeMap.light, vertices, "triangles", "dynamic")
+	lightMesh = love.graphics.newMesh(vertexAttributeMap.light, vertices, 'triangles', 'dynamic')
 end
 
 function light.new()
@@ -2368,33 +3030,33 @@ function light.new()
 
 	local self = {}
 
-	function self.setpos(newpos)
+	function self.setPosition(newpos)
 		pos = newpos
 	end
 
-	function self.setcolor(newcolor)
-		color = newcolor
+	function self.setColor(netColor)
+		color = netColor
 	end
 
-	function self.setalpha(newalpha)
-		alpha = newalpha
+	function self.setAlpha(newAlpha)
+		alpha = newAlpha
 	end
 
-	function self.getpos()
+	function self.getPos()
 		return pos
 	end
 
-	function self.getcolor()
+	function self.getColor()
 		return color
 	end
 
-	function self.getalpha()
+	function self.getAlpha()
 		return alpha
 	end
 
 	local frequencyscale = Vector3.new(0.3, 0.59, 0.11)
 
-	function self.getdrawdata()
+	function self.getDrawData()
 		local brightness = frequencyscale:Dot(color)
 		local radius = sqrt(brightness/alpha)
 		vertT[1] = radius
@@ -2408,11 +3070,11 @@ function light.new()
 		colorT[3] = color.z
 	end
 
-	return lightmesh, vertT, colorT
+	return lightMesh, vertT, colorT
 end
 
 return self
---]]
+]]
 
 
 
@@ -2457,33 +3119,31 @@ randy.unit3()
 randy.unit4()
 	return random variables whose magnitude is 1
 
-randy.newsampler(width, height, generator)
+randy.newSampler(width, height, generator)
 	returns an object with a image which can be sampled from
 	width and height are the dimensions of the image
 	generator is a function which returns up to 4 random variables
 
-	sampler.getdrawdata()
+	sampler.getDrawData()
 		returns image, size, randomoffset
 
 Note:
 	log(random()) is kinda wrong because it has a chance of
 	evaluating to log(0), which isn't good. Use log(1 - random())
 	if you're worried about this.
---]]
+]]
 
 local randy = {}
 do
-	local random = math.random
 	local cos = math.cos
-	local sin = math.sin
 	local log = math.log
+	local random = math.random
+	local sin = math.sin
 	local sqrt = math.sqrt
 
 	local tau = 6.28318530
 
-	function randy.uniform1()
-		return random()
-	end
+	randy.uniform1 = random
 
 	function randy.uniform2()
 		return random(), random()
@@ -2587,7 +3247,7 @@ do
 	end
 
 	-- just make some random values that the buffers can use
-	function randy.newsampler(w, h, generator, format)
+	function randy.newSampler(w, h, generator, format)
 		local self = {}
 		local data = love.image.newImageData(w, h, format)
 
@@ -2603,9 +3263,9 @@ do
 		local size = {w, h}
 		local offset = {0, 0}
 
-		function self.getdrawdata()
-			offset[1] = rand(w) - 1
-			offset[2] = rand(h) - 1
+		function self.getDrawData()
+			offset[1] = random(w) - 1
+			offset[2] = random(h) - 1
 			return image, size, offset
 		end
 
@@ -2655,143 +3315,8 @@ end
 
 
 
-
-
-
-love.filesystem.setIdentity("lovlox")
-
-
-
-
-
-
-
-
-
-
-local MSC = 1/512
-
-love.keypressed:Connect(function(k)
-	if k == "c" then
-		love.mouse.setRelativeMode(not love.mouse.getRelativeMode())
-	elseif k == "printscreen" then
-		love.graphics.captureScreenshot(tick()..".png")
-	end
-end)
-
-local camera = workspace.Camera
-camera.CFrame = CFrame.new(0, 30, 50)
-
----[[
-local function fromAxisAngle(v)
-	return v.Magnitude > 0 and CFrame.fromAxisAngle(v.Unit, v.Magnitude) or CFrame.new()
+if runningAs.server then
+	lovlox.hostPlace('bowmen2.rbxlx', 'localhost', 57005)
 end
 
-love.mousemoved:Connect(function(_, _, dx, dy)
-	camera.CFrame = camera.CFrame*fromAxisAngle(Vector3.new(-MSC*dy, -MSC*dx, 0))
-end)
-
-love.update:Connect(function(dt)
-	local targetVelocity = Vector3.new(
-		(love.keyboard.isDown("d") and 1 or 0) + (love.keyboard.isDown("a") and -1 or 0),
-		(love.keyboard.isDown("e") and 1 or 0) + (love.keyboard.isDown("q") and -1 or 0),
-		(love.keyboard.isDown("s") and 1 or 0) + (love.keyboard.isDown("w") and -1 or 0)
-	)
-
-	camera.CFrame = camera.CFrame*CFrame.new(32*dt*targetVelocity)
-end)
---]]
-
---love.update:Connect(lovlox.update)
-
-
-
-
-
-
-
-
-local function createProjectionFrustum(v, a, n, f)
-	local i = 1/(n - f)
-	return {
-		a*v, 0, 0, 0,
-		0, v, 0, 0,
-		0, 0, (n + f)*i, 2*n*f*i,
-		0, 0, -1, 0
-	}
-end
-
-
-
-
-
-
-
-local hdri = love.graphics.newImage("hdris/tennisnight.jpg")
-
-
-
-
-
-love.draw:Connect(function()
-	local cameraP = {camera.CFrame.Position:GetComponents()}
-	local cameraO = {Quaternion.fromCFrame(camera.CFrame):GetComponents()}
-	local cameraT = createProjectionFrustum(1, csy/csx, 0.1, 10000)
-
-	love.graphics.setDepthMode("less", true)
-	love.graphics.setMeshCullMode("front")
-
-	-- draw to geometry buffer
-	love.graphics.setCanvas(geometryBuffer)
-	love.graphics.clear()
-
-	love.graphics.setShader(geometryShader)
-	geometryShader:send("cameraP", cameraP)
-	geometryShader:send("cameraO", cameraO)
-	geometryShader:send("cameraT", cameraT)
-
-	for i = 1, #meshes do
-		meshes[i]:Draw()
-	end
-
-
-	-- sky?
-	--[[
-	love.graphics.setCanvas()
-
-	love.graphics.setShader(skyShader)
-	skyShader:send("cameraO", cameraO)
-	--skyShader:send("cameraT", cameraT)
-	skyShader:send("skyTex", hdri)
-
-	love.graphics.draw(compositeBuffer[1])
-	--]]
-
-
-	-- draw to screen
-	love.graphics.setCanvas()
-
-	love.graphics.setShader(debandShader)
-	debandShader:send("worldNs", geometryBuffer[2])
-	debandShader:send("worldCs", geometryBuffer[3])
-
-	love.graphics.draw(compositeBuffer[1])
-
-
-	-- fps
-	love.graphics.reset()
-	love.graphics.print(love.timer.getFPS())
-end)
-
-
-
-
---[[
-if runningAs.client then
-	love.keypressed:Connect(function(k)
-		if k == "F" then
-			game.ReplicatedStorage.RemoteEvent:FireServer("ready")
-		end
-	end)
-end
---]]
+lovlox.connectToServer('localhost', 57005)

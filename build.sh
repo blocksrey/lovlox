@@ -1,0 +1,1 @@
+clang *.c -o lovlox -lluajit-5.1

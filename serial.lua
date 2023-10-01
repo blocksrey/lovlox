@@ -29,10 +29,10 @@ local unpack = unpack or table.unpack
 
 -- Takes in a string of serialized data and returns a table with the values in it and the amount of values
 -- The data must have been serialized with LuaSerializer.serialize_nocompress
--- LuaSerializer.unserialize(serializeddata)
+-- LuaSerializer.deserialize(serializeddata)
 
 local serialized = LuaSerializer.serialize(55, "test", {1,2, y = 66}, nil, true)
-local data, n = LuaSerializer.unserialize(serialized)
+local data, n = LuaSerializer.deserialize(serialized)
 print(unpack(data, 1, n))
 -- prints:
 -- 55      test    table: 491A9920 nil     true
@@ -43,10 +43,10 @@ print(unpack(data, 1, n))
 
 -- Takes in a string of serialized data and returns a table with the values in it and the amount of values
 -- The data must have been serialized with LuaSerializer.serialize
--- LuaSerializer.unserialize_nocompress(serializeddata)
+-- LuaSerializer.deserialize_nocompress(serializeddata)
 
 local serialized = LuaSerializer.serialize_nocompress(55, "test", {1,2, y = 66}, nil, true)
-local data, n = LuaSerializer.unserialize_nocompress(serialized)
+local data, n = LuaSerializer.deserialize_nocompress(serialized)
 print(unpack(data, 1, n))
 -- prints:
 -- 55      test    table: 491A9920 nil     true
@@ -208,7 +208,7 @@ local LuaSerializer_serialize_nocompress = LuaSerializer.serialize_nocompress
 
 -- Takes in a string of serialized data and returns a table with the values in it and the amount of values
 -- The data must have been serialized with LuaSerializer.serialize_nocompress
-function LuaSerializer.unserialize_nocompress(serializeddata)
+function LuaSerializer.deserialize_nocompress(serializeddata)
     assert(type(serializeddata) == 'string', "#1 string expected")
 
     -- parse all data and convert it to real values
@@ -222,21 +222,21 @@ function LuaSerializer.unserialize_nocompress(serializeddata)
 
     return res, i-1
 end
-local LuaSerializer_unserialize_nocompress = LuaSerializer.unserialize_nocompress
+local LuaSerializer_deserialize_nocompress = LuaSerializer.deserialize_nocompress
 
 -- Takes in values and returns a string with them serialized
 -- Uses LZW compression, use LuaSerializer.serialize_nocompress if you dont want this
 function LuaSerializer.serialize(...)
     -- Serialize and compress data
-    return (assert(TLibCompress.CompressLZW(LuaSerializer_serialize_nocompress(...))))
+    return (assert(TLibCompress.CompressLZW(LuaSerializer_serialize_nocompress(...))))..'\n' -- I have no idea why this works despite not making any changes to the deserializer lmao
 end
 
 -- Takes in a string of serialized data and returns a table with the values in it and the amount of values
 -- The data must have been serialized with LuaSerializer.serialize
-function LuaSerializer.unserialize(serializeddata)
+function LuaSerializer.deserialize(serializeddata)
     assert(type(serializeddata) == 'string', "#1 string expected")
-    -- uncompress and unserialize data
-    return LuaSerializer_unserialize_nocompress(assert(TLibCompress.DecompressLZW(serializeddata)))
+    -- uncompress and deserialize data
+    return LuaSerializer_deserialize_nocompress(assert(TLibCompress.DecompressLZW(serializeddata)))
 end
 
 return LuaSerializer
