@@ -119,16 +119,8 @@ end
 ---Loads an XML file from a specified path
 --@param xmlFilePath the path for the XML file to load
 --@return the XML loaded file content
-function xml2lua.loadFile(xmlFilePath)
- local f, e = io.open(xmlFilePath, "r")
- if f then
---Gets the entire file content and stores into a string
- local content = f:read("*a")
- f:close()
- return content
- end
- 
- error(e)
+function xml2lua.loadString(xml_string)
+ return xml_string
 end
 
 ---Gets an _attr element from a table that represents the attributes of an XML tag,
